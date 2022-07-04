@@ -7,6 +7,8 @@ import {useSelector} from 'react-redux';
 // Responsible for watching redux state, and returning an appropriate component
 // API for this component is the same as a regular route
 
+/* NOT SECURITY */
+
 // THIS IS NOT SECURITY! That must be done on the server
 // A malicious user could change the code and see any view
 // so your server-side route must implement real security
