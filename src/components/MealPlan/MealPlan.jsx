@@ -4,124 +4,145 @@ function MealPlan() {
   return (
     <div className="container">
       <p>Meal planner</p>
-      <table>
-        <thead>
-          <th>Day</th>
-          <th>Meal</th>
-          <th>Type</th>
-          <th>Carbs</th>
-          <th>Blood sugar level</th>
-          <th>Notes</th>
-          <th>    </th>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Monday</th>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+      <div className='navBar2'>
 
-          <tr>
-            <th>Tuesday</th>
+        <button>⬅️</button>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+        <label htmlFor="date"> Week of:</label>
+        <input
+          type="date"
+          name="weekOf"
+          value="2022-07-22"
+          min="2022-07-22"
+        />
 
-          <tr>
-            <th>Wednesday</th>
+        <label>Max Carb Intake: 210/GMs </label>
+        <button>➡️</button>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+      </div>
 
-          <tr>
-            <th>Thursday</th>
+      {/* //////////////////MEAL TABLE/////////////////////////// */}
+      <div>
+        <table>
+          <thead>
+            <th>Day</th>
+            <th>Meal</th>
+            <th>Type</th>
+            <th>Carbs</th>
+            <th>Blood sugar level</th>
+            <th>Notes</th>
+            <th>    </th>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Monday</th>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
 
-          <tr>
-            <th>Friday</th>
+            <tr>
+              <th>Tuesday</th>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
 
-          <tr>
-            <th>Saturday</th>
+            <tr>
+              <th>Wednesday</th>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
 
-          <tr>
-            <th>Sunday</th>
+            <tr>
+              <th>Thursday</th>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> 
-            <input type="checkbox" />
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
 
+            <tr>
+              <th>Friday</th>
+
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <th>Saturday</th>
+
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <th>Sunday</th>
+
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <input type="checkbox" />
+                <button>Edit</button>
+                <button>Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
     </div>
   );
 }
