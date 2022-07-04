@@ -1,5 +1,6 @@
 import React from 'react';
 import './MealPlan.css';
+import './MealPlanDetail';
 function MealPlan() {
   return (
     <div className="container">
@@ -152,14 +153,18 @@ function MealPlan() {
           <input type="text" />
 
           <label htmlFor="type">Meal Type:</label>
-          <select name="type" id="mealtype">
+          <select
+            name="type"
+            id="mealtype">
             <option value="Breakfest">Breakfest</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
           </select>
 
           <label htmlFor="date"> Day:</label>
-          <select name="date" id="date">
+          <select
+            name="date"
+            id="date">
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -170,7 +175,7 @@ function MealPlan() {
           </select>
 
           <label htmlFor="total"> meal total carbs:</label>
-          <input id="total" type="number" min="0"  />
+          <input id="total" type="number" min="0" />
 
           <button>Submit</button>
         </form>
