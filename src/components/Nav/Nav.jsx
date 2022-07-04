@@ -31,11 +31,15 @@ function Nav() {
             <Link className="navLink" to="/info">
               Info Page
             </Link>
-
+            {/* //////////TAREK ADDED CODE HERE////////////// */}
             <Link className="navLink" to="/profile">
               Profile Page
             </Link>
 
+            <Link className="navLink" to="/mealplan">
+              Meal Page
+            </Link>
+            {/* ///////////////////////////////////////////// */}
             <LogOutButton className="navLink" />
           </>
         )}
