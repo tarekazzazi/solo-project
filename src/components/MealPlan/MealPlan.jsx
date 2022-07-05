@@ -1,20 +1,20 @@
 import React from 'react';
 import './MealPlan.css';
 import './MealPlanDetail';
-
+import Calender from './Calander';
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-import { WeeklyCalendar } from 'react-week-picker';
-import 'react-week-picker/src/lib/calendar.css';
+// import { WeeklyCalendar } from 'react-week-picker';
+// import 'react-week-picker/src/lib/calendar.css';
 
 function MealPlan() {
 
-  const handleJumpToCurrentWeek = (currenDate) => {
-    console.log(`current date: ${currenDate}`);
-  }
+  // const handleJumpToCurrentWeek = (currenDate) => {
+  //   console.log(`current date: ${currenDate}`);
+  // }
 
-  const handleWeekPick = (startDate, endDate) => {
-    console.log(`${startDate} to ${endDate}`);
-  }
+  // const handleWeekPick = (startDate, endDate) => {
+  //   console.log(`${startDate} to ${endDate}`);
+  // }
 
   return (
     <div className="container">
@@ -23,21 +23,13 @@ function MealPlan() {
 
       <div className='navBar2'>
 
-        <FaArrowAltCircleLeft
-
-        />
-
+        <FaArrowAltCircleLeft />
         <label htmlFor="date"> Week of:</label>
-        <div data-testid="calendar">
-          <WeeklyCalendar
-            onWeekPick={handleWeekPick} j
-            jumpToCurrentWeekRequired={true}
-            onJumpToCurrentWeek={handleJumpToCurrentWeek}
-          />
+        <div className='date'>
+          <Calender />
         </div>
 
         <label>Max Carb Intake: 210/GMs </label>
-
         <FaArrowCircleRight />
 
       </div>
