@@ -1,49 +1,73 @@
 import React from 'react';
 import './MealPlan.css';
 import './MealPlanDetail';
+
+import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
+// import Calendar from './Calander.jsx';
+import { WeeklyCalendar } from 'react-week-picker';
+import 'react-week-picker/src/lib/calendar.css';
+
 function MealPlan() {
+
+  const handleJumpToCurrentWeek = (currenDate) => {
+    console.log(`current date: ${currenDate}`);
+  }
+
+  const handleWeekPick = (startDate, endDate) => {
+    console.log(`${startDate} to ${endDate}`);
+  }
+
   return (
     <div className="container">
       <p>Meal planner</p>
 
       <div className='navBar2'>
 
-        <button>⬅️</button>
+        <FaArrowAltCircleLeft
 
-        <label htmlFor="date"> Week of:</label>
-        <input
-          type="date"
-          name="weekOf"
-          value="2022-07-22"
-          min="2022-07-22"
         />
 
+        <label htmlFor="date"> Week of:</label>
+        <div data-testid="calendar">
+          <WeeklyCalendar
+            onWeekPick={handleWeekPick} j
+            jumpToCurrentWeekRequired={true}
+            onJumpToCurrentWeek={handleJumpToCurrentWeek}
+          />
+        </div>
+
         <label>Max Carb Intake: 210/GMs </label>
-        <button>➡️</button>
+
+        <FaArrowCircleRight />
 
       </div>
 
       {/* //////////////////MEAL TABLE/////////////////////////// */}
-      <div>
+      <div className='mealTableContainer'>
+
         <table>
           <thead>
-            <th>Day</th>
-            <th>Meal</th>
-            <th>Type</th>
-            <th>Carbs</th>
-            <th>Blood sugar level</th>
-            <th>Notes</th>
-            <th>    </th>
+            <tr>
+              <th>Day</th>
+              <th>Meal</th>
+              <th>Type</th>
+              <th>Carbs</th>
+              <th>Blood sugar level</th>
+              <th>Notes</th>
+              <th>    </th>
+            </tr>
           </thead>
           <tbody>
             <tr>
               <th>Monday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+
+
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -54,11 +78,11 @@ function MealPlan() {
             <tr>
               <th>Tuesday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -69,11 +93,11 @@ function MealPlan() {
             <tr>
               <th>Wednesday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -84,11 +108,11 @@ function MealPlan() {
             <tr>
               <th>Thursday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -99,11 +123,11 @@ function MealPlan() {
             <tr>
               <th>Friday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -114,11 +138,11 @@ function MealPlan() {
             <tr>
               <th>Saturday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -129,11 +153,11 @@ function MealPlan() {
             <tr>
               <th>Sunday</th>
 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
+              <td className='tableCell'></td>
               <td>
                 <input type="checkbox" />
                 <button>Edit</button>
@@ -142,6 +166,7 @@ function MealPlan() {
             </tr>
           </tbody>
         </table>
+
       </div>
       {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
 

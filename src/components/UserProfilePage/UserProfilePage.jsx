@@ -20,6 +20,7 @@ function UserProfilePage() {
             <label htmlFor="comment">Doctor Notes</label>
             <br/>
             <textarea name="comment"></textarea>
+            <button>Submit</button>
         </form>
         
       </div>
