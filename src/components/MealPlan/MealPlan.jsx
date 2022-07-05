@@ -3,7 +3,6 @@ import './MealPlan.css';
 import './MealPlanDetail';
 
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-// import Calendar from './Calander.jsx';
 import { WeeklyCalendar } from 'react-week-picker';
 import 'react-week-picker/src/lib/calendar.css';
 
@@ -19,6 +18,7 @@ function MealPlan() {
 
   return (
     <div className="container">
+
       <p>Meal planner</p>
 
       <div className='navBar2'>
