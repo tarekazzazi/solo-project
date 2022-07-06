@@ -34,6 +34,8 @@ function* mealSaga() {
     yield takeLatest('FETCH_MEAL', getMeals);
 
     yield takeLatest('ADD_MEAL', addmeals )
+
+    
 }
 
 export default mealSaga;

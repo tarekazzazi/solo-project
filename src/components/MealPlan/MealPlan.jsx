@@ -58,7 +58,7 @@ function MealPlan() {
             {meals && meals.map(meal => {
               return (
                 <tr key={meal.id}>
-                  <th>Monday</th>
+                  <th>{meal.meal_day}</th>
                   <td className='tableCell'>{meal.meal_name}</td>
                   <td className='tableCell'>{meal.meal_type}</td>
                   <td className='tableCell'>{meal.carbs}</td>

@@ -27,8 +27,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
   const sqlQuery = ` 
-  INSERT INTO meals (meal_name, meal_type, carbs)
-  VALUES ($1, $2, $3)
+  INSERT INTO meals (meal_name, meal_type, carbs, notes, date)
+  VALUES ($1, $2, $3, $4, $5)
   `;
 
 console.log('req.body',req.body.meal_name);
@@ -36,6 +36,8 @@ console.log('req.body',req.body.meal_name);
     req.body.meal_name,
     req.body.type,
     req.body.carbs,
+    req.body.notes,
+    req.body.date,
   ]
   pool.query(sqlQuery, sqlParams)
     .then(dbRes => {
