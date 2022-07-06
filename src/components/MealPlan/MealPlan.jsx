@@ -7,9 +7,11 @@ import {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 function MealPlan() {
   const dispatch = useDispatch();
-
+  const meal = useSelector(store => store.meal);
+  console.log('the meals are', meal);
     useEffect(() => {
       console.log('In use Effect');
+ 
       dispatch({
         type: 'FETCH_MEAL'
       })
