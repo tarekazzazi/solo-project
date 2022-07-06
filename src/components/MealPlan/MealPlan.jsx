@@ -3,22 +3,20 @@ import './MealPlan.css';
 import './MealPlanDetail';
 import Calender from './Calander';
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-// import { WeeklyCalendar } from 'react-week-picker';
-// import 'react-week-picker/src/lib/calendar.css';
-
+import {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 function MealPlan() {
+  const dispatch = useDispatch();
 
-  // const handleJumpToCurrentWeek = (currenDate) => {
-  //   console.log(`current date: ${currenDate}`);
-  // }
-
-  // const handleWeekPick = (startDate, endDate) => {
-  //   console.log(`${startDate} to ${endDate}`);
-  // }
-
+    useEffect(() => {
+      console.log('In use Effect');
+      dispatch({
+        type: 'FETCH_MEAL'
+      })
+    },[])
   return (
+    
     <div className="container">
-
       <p>Meal planner</p>
 
       <div className='navBar2'>
