@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import './MealPlan.css';
+import './Styles/MealPlan.css';
 import './MealPlanDetail';
 import Calender from './Calander';
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
