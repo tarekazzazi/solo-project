@@ -5,21 +5,20 @@ function MealForm() {
     const dispatch = useDispatch();
     const [date, setDateTo] = useState('Monday');
     const [type, setMealType] = useState('Breakfest');
-    const [Carbs, setTotalCarbs] = useState(0);
+    const [carbs, setTotalCarbs] = useState(0);
     const [meal_name, setMealName ] = useState('');
     function handleSubmit(evt) {
         evt.preventDefault();
         console.log(date);
         console.log(type);
-        console.log(Carbs);
+        console.log(carbs);
         console.log(meal_name);
 
        dispatch({
             type: 'ADD_MEAL',
             payload: {
-                date,
                 type,
-                Carbs,
+                carbs,
                 meal_name,
             }
         })
