@@ -7,7 +7,7 @@ function MealForm() {
     console.log('the current date is',currenDate);
     const dispatch = useDispatch();
     const startdate = useSelector((store) => store.date);
-    console.log('starte');
+    console.log('startdate from store is', startdate);
     const [date, setDateTo] = useState('');
     const [type, setMealType] = useState('Breakfest');
     const [carbs, setTotalCarbs] = useState(0);
