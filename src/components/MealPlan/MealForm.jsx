@@ -1,9 +1,22 @@
-import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 function MealForm() {
+    const [date, setDateTo] = useState([]);
     function handleSubmit(evt) {
         evt.preventDefault();
-        console.log('hello');
+        console.log(date);
+        // useDispatch({
+        //     type: 'ADD_MEAL',
+        //     payload: {
+               
+
+
+        //     }
+        // })
+       
+
+
     }
 
     return (
@@ -12,7 +25,9 @@ function MealForm() {
                 <h5>Add a new meal...</h5>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Meal Name:</label>
-                    <input type="text" />
+                    <input type="text" 
+                    
+                    />
 
                     <label htmlFor="type">Meal Type:</label>
                     <select
@@ -26,7 +41,9 @@ function MealForm() {
                     <label htmlFor="date"> Day:</label>
                     <select
                         name="date"
-                        id="date">
+                        id="date"
+                        onChange={e => {setDateTo(e.target.value)}}
+                        >
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
