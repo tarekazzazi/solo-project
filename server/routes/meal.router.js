@@ -11,21 +11,38 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const query = 'SELECT * FROM meals';
   pool.query(query)
     .then(result => {
-        console.log('the result is',result);
-         res.send(result.rows);
+      console.log('the result is', result);
+      res.send(result.rows);
     })
     .catch(err => {
-        console.log(`Uh oh there is a error, ${err}`);
-        res.sendStatus(500);
+      console.log(`Uh oh there is a error, ${err}`);
+      res.sendStatus(500);
     })
-   
+
 });
 
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   // POST route code here
+  const sqlQuery = ` 
+  INSERT INTO meals (meal_name)
+  VALUES ($1)
+  `;
+console.log('req.body',req.body.meal_name);
+  const sqlParams = [
+    req.body.meal_name,
+
+  ]
+  pool.query(sqlQuery, sqlParams)
+    .then(dbRes => {
+      res.sendStatus(201)
+    })
+    .catch(err => {
+      console.log(`error in post meals ${err}`);
+      res.sendStatus(500)
+    });
 });
 
 module.exports = router;

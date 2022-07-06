@@ -2,26 +2,27 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 function MealForm() {
-
+    const dispatch = useDispatch();
     const [date, setDateTo] = useState('Monday');
     const [type, setMealType] = useState('Breakfest');
-    const [total, setTotalCarbs] = useState(0);
-    const [mealName, setMealName ] = useState('');
+    const [Carbs, setTotalCarbs] = useState(0);
+    const [meal_name, setMealName ] = useState('');
     function handleSubmit(evt) {
         evt.preventDefault();
         console.log(date);
         console.log(type);
-        console.log(total);
-        console.log(mealName);
+        console.log(Carbs);
+        console.log(meal_name);
 
-        // useDispatch({
-        //     type: 'ADD_MEAL',
-        //     payload: {
-
-
-
-        //     }
-        // })
+       dispatch({
+            type: 'ADD_MEAL',
+            payload: {
+                date,
+                type,
+                Carbs,
+                meal_name,
+            }
+        })
 
     }
 
