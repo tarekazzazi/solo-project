@@ -2,10 +2,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import currenDate from './Calander';
+
 function MealForm() {
     console.log('the current date is',currenDate);
     const dispatch = useDispatch();
-
+    const startdate = useSelector((store) => store.date);
+    console.log('starte');
     const [date, setDateTo] = useState('');
     const [type, setMealType] = useState('Breakfest');
     const [carbs, setTotalCarbs] = useState(0);

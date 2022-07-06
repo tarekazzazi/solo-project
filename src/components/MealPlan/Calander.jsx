@@ -9,10 +9,10 @@ const dispatch = useDispatch();
   
     const handleJumpToCurrentWeek = (currenDate) => {
         console.log(`current date: ${currenDate}`);
-        // const date = currenDate;
-       
-
-        // store start date in redux store 
+        dispatch({
+            type: 'JUMP_DATE',
+            payload: currenDate
+        }) 
         // do math logic in meal form (day + 1)
     }
 
