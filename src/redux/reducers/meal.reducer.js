@@ -1,4 +1,4 @@
-const mealReducer = (state = {}, action) => {
+const mealReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MEAL':
             return action.payload;
