@@ -1,24 +1,27 @@
-import React from 'react';
-import './MealPlan.css';
+import React, { Fragment } from 'react';
+import './Styles/MealPlan.css';
 import './MealPlanDetail';
 import Calender from './Calander';
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-// import { WeeklyCalendar } from 'react-week-picker';
-// import 'react-week-picker/src/lib/calendar.css';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import MealForm from './MealForm';
+
 
 function MealPlan() {
+  const dispatch = useDispatch();
+  const meals = useSelector(store => store.meal);
+  console.log('the meals are', meals);
+  useEffect(() => {
+    console.log('In use Effect');
 
-  // const handleJumpToCurrentWeek = (currenDate) => {
-  //   console.log(`current date: ${currenDate}`);
-  // }
-
-  // const handleWeekPick = (startDate, endDate) => {
-  //   console.log(`${startDate} to ${endDate}`);
-  // }
-
+    dispatch({
+      type: 'FETCH_MEAL'
+    })
+  }, [])
   return (
-    <div className="container">
 
+    <div className="container">
       <p>Meal planner</p>
 
       <div className='navBar2'>
@@ -36,7 +39,7 @@ function MealPlan() {
 
       {/* //////////////////MEAL TABLE/////////////////////////// */}
       <div className='mealTableContainer'>
-
+     
         <table>
           <thead>
             <tr>
@@ -49,23 +52,26 @@ function MealPlan() {
               <th>    </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th>Monday</th>
 
-              <td className='tableCell'></td>
-              <td className='tableCell'></td>
-              <td className='tableCell'></td>
-              <td className='tableCell'></td>
-              <td className='tableCell'></td>
-
-
-              <td>
-                <input type="checkbox" />
-                <button>Edit</button>
-                <button>Delete</button>
-              </td>
-            </tr>
+          <tbody className='mealBody'>
+           
+            {meals && meals.map(meal => {
+              return (
+                <tr key={meal.id}>
+                  <th>{meal.meal_day}</th>
+                  <td className='tableCell'>{meal.meal_name}</td>
+                  <td className='tableCell'>{meal.meal_type}</td>
+                  <td className='tableCell'>{meal.carbs}</td>
+                  <td className='tableCell'>{meal.blood_sugar_lvl}</td>
+                  <td className='tableCell'>{meal.notes}</td>
+                  <td>
+                    <input type="checkbox" />
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr> 
+              );
+            })} 
 
             <tr>
               <th>Tuesday</th>
@@ -163,40 +169,7 @@ function MealPlan() {
       {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
 
       {/* ////////////////Add A New Meal Form////////////////////////////////// */}
-      <div>
-        <h5>Add a new meal...</h5>
-        <form>
-          <label htmlFor="name">Meal Name:</label>
-          <input type="text" />
-
-          <label htmlFor="type">Meal Type:</label>
-          <select
-            name="type"
-            id="mealtype">
-            <option value="Breakfest">Breakfest</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-          </select>
-
-          <label htmlFor="date"> Day:</label>
-          <select
-            name="date"
-            id="date">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-          </select>
-
-          <label htmlFor="total"> meal total carbs:</label>
-          <input id="total" type="number" min="0" />
-
-          <button>Submit</button>
-        </form>
-      </div>
+      <MealForm/>
     </div>
   );
 }

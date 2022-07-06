@@ -27,3 +27,6 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 export default store;
+
+// store start date in redux store 
+// do math logic in meal form (day + 1)
