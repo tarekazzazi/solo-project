@@ -8,60 +8,82 @@ function MealForm() {
     const dispatch = useDispatch();
     const startDate = useSelector((store) => store.date);
     //  console.log('startdate from store is', startDate);
-  
+
     // console.log('startdate  is', startdate);
-    const [day, setDayOfWeek ] = useState("");
+    const [selecteDate, setSelectedDate] = useState('');
+    const [day, setDayOfWeek] = useState("");
     const [type, setMealType] = useState('Breakfest');
     const [carbs, setTotalCarbs] = useState(0);
     const [meal_name, setMealName] = useState('');
 
-    
-    function handleSubmit(evt) {
-        evt.preventDefault();
+    // checks to see if date === "Monday"
+    // startDate is always a Monday of each week
+    // If true returns the startDate of the week
+    // If Its any other day than monday it adds a day to the start date till it reachs wednesday or thursday or friday etc...
+    function renderDate(startDate, day) {
+        switch (day) {
+            case "Monday":
+                return addDays(new Date(startDate), 1); // calculates how many days to add onto start date
+            case "Tuesday":
+                return addDays(new Date(startDate), 2);
+            case "Wednesday":
+                return addDays(new Date(startDate), 3);
+            case "Thursday":
+                return addDays(new Date(startDate), 4);
+            case "Friday":
+                return addDays(new Date(startDate), 5);
+            case "Saturday":
+                return addDays(new Date(startDate), 6);
+            case "Sunday":
+                return addDays(new Date(startDate), 0);
+        }
+        return;
+    }
+           function addDays(date, days) {
 
-        function addDays(date, days) {
-        
             // Calculates new date here
             let result = new Date(date);
             result.setDate(result.getDate() + days);
-            return console.log('result is', result);
+            // console.log(result);
+            const mealdate = result;
+
+            return (mealdate);
         }
-        // checks to see if date === "Monday"
-        // startDate is always a Monday of each week
-        // If true returns the startDate of the week
-        // If Its any other day than monday it adds a day to the start date till it reachs wednesday or thursday or friday etc...
-            switch(day){
-                case "Monday":   
-                    return addDays(new Date(startDate), 1); // calculates how many days to add onto start date
-                case "Tuesday":
-                    return addDays(new Date(startDate), 2); 
-                case "Wednesday": 
-                    return addDays(new Date(startDate), 3);
-                case "Thursday":
-                    return  addDays(new Date(startDate), 4);
-                case "Friday":
-                    return  addDays(new Date(startDate), 5);
-                case "Saturday":
-                    return  addDays(new Date(startDate), 6);
-                case "Sunday":
-                    return  addDays(new Date(startDate), 0);
-                
-            }
-        //   addDays(new Date(startDate), 1);
-          
-          
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        console.log('Select date', selecteDate);
+        // function addDays(date, days) {
+
+        //     // Calculates new date here
+        //     let result = new Date(date);
+        //     result.setDate(result.getDate() + days);
+        //     // console.log(result);
 
 
+        //     return (result);
+        // }
+    
+        console.log('In mealform');
         dispatch({
             type: 'ADD_MEAL',
             payload: {
                 type,
                 carbs,
                 meal_name,
-                result,
+                selecteDate,
+
 
             }
         })
+
+
+
+
+ 
+
+
+
 
     }
 
@@ -91,7 +113,11 @@ function MealForm() {
                         id="day"
                         name="day"
                         required
-                        onChange={e => { setDayOfWeek(e.target.value) }}
+                        onChange={e => {
+                            setDayOfWeek(e.target.value)
+                            setSelectedDate(renderDate(startDate, e.target.value))
+                        }}
+
                     >
                         <option value="">Select Day</option>
                         <option value="Monday">Monday</option>

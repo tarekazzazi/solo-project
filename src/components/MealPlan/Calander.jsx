@@ -7,20 +7,13 @@ import {useDispatch} from 'react-redux';
 function Calender() {
 const dispatch = useDispatch();
 
-    // const handleJumpToCurrentWeek = (startDate) => {
-    //     console.log(`current date: ${startDate}`);
-    //     dispatch({
-    //         type: 'ADD_DATE',
-    //         payload: startDate
-    //     }) 
-    //     // do math logic in meal form (day + 1)
-    // }
+   
 
     const handleWeekPick = (startDate) => {
         console.log(`${startDate} `);
         startDate
         dispatch({
-            type: 'JUMP_DATE',
+            type: 'ADD_DATE',
             payload: startDate
         })
 

@@ -37,8 +37,10 @@ console.log('req.body',req.body.meal_name);
     req.body.type,
     req.body.carbs,
     req.body.notes,
-    req.body.date,
+    req.body.selecteDate,
   ]
+  console.log('did the date make it over',req.body.mealdate);
+
   pool.query(sqlQuery, sqlParams)
     .then(dbRes => {
       res.sendStatus(201)
