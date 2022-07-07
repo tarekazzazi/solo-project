@@ -71,7 +71,7 @@ function MealForm() {
                 type,
                 carbs,
                 meal_name,
-                selecteDate,
+                selecteDate: selecteDate
 
 
             }
