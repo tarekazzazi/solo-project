@@ -1,33 +1,65 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import currenDate from './Calander';
 
 function MealForm() {
-    console.log('the current date is',currenDate);
+    console.log('the current date is', currenDate);
     const dispatch = useDispatch();
-    const startdate = useSelector((store) => store.date);
-    console.log('startdate from store is', startdate);
-    const [date, setDateTo] = useState('');
+    const startDate = useSelector((store) => store.date);
+    //  console.log('startdate from store is', startDate);
+  
+    // console.log('startdate  is', startdate);
+    const [day, setDayOfWeek ] = useState("");
     const [type, setMealType] = useState('Breakfest');
     const [carbs, setTotalCarbs] = useState(0);
-    const [meal_name, setMealName ] = useState('');
+    const [meal_name, setMealName] = useState('');
 
+    
     function handleSubmit(evt) {
         evt.preventDefault();
-        console.log(date);
-        console.log(type);
-        console.log(carbs);
-        console.log(meal_name);
 
-       dispatch({
+        function addDays(date, days) {
+        
+            // Calculates new date here
+            let result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return console.log('result is', result);
+        }
+        // checks to see if date === "Monday"
+        // startDate is always a Monday of each week
+        // If true returns the startDate of the week
+        // If Its any other day than monday it adds a day to the start date till it reachs wednesday or thursday or friday etc...
+            switch(day){
+                case "Monday":   
+                    return addDays(new Date(startDate), 1); // calculates how many days to add onto start date
+                case "Tuesday":
+                    return addDays(new Date(startDate), 2); 
+                case "Wednesday": 
+                    return addDays(new Date(startDate), 3);
+                case "Thursday":
+                    return  addDays(new Date(startDate), 4);
+                case "Friday":
+                    return  addDays(new Date(startDate), 5);
+                case "Saturday":
+                    return  addDays(new Date(startDate), 6);
+                case "Sunday":
+                    return  addDays(new Date(startDate), 0);
+                
+            }
+        //   addDays(new Date(startDate), 1);
+          
+          
+
+
+        dispatch({
             type: 'ADD_MEAL',
             payload: {
                 type,
                 carbs,
                 meal_name,
-                date,
-                
+                result,
+
             }
         })
 
@@ -40,7 +72,7 @@ function MealForm() {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Meal Name:</label>
                     <input type="text"
-                    onChange={e => {setMealName(e.target.value)}}
+                        onChange={e => { setMealName(e.target.value) }}
                     />
 
                     <label htmlFor="type">Meal Type:</label>
@@ -59,7 +91,7 @@ function MealForm() {
                         id="day"
                         name="day"
                         required
-                        onChange={e => { setDateTo(e.target.value) }}
+                        onChange={e => { setDayOfWeek(e.target.value) }}
                     >
                         <option value="">Select Day</option>
                         <option value="Monday">Monday</option>

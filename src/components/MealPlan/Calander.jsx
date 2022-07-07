@@ -6,20 +6,21 @@ import {useDispatch} from 'react-redux';
 
 function Calender() {
 const dispatch = useDispatch();
-  
-    const handleJumpToCurrentWeek = (currenDate) => {
-        console.log(`current date: ${currenDate}`);
+
+    // const handleJumpToCurrentWeek = (startDate) => {
+    //     console.log(`current date: ${startDate}`);
+    //     dispatch({
+    //         type: 'ADD_DATE',
+    //         payload: startDate
+    //     }) 
+    //     // do math logic in meal form (day + 1)
+    // }
+
+    const handleWeekPick = (startDate) => {
+        console.log(`${startDate} `);
+        startDate
         dispatch({
             type: 'JUMP_DATE',
-            payload: currenDate
-        }) 
-        // do math logic in meal form (day + 1)
-    }
-
-    const handleWeekPick = (startDate, endDate) => {
-        console.log(`${startDate} to ${endDate}`);
-        dispatch({
-            type: 'ADD_DATE',
             payload: startDate
         })
 
@@ -29,12 +30,12 @@ const dispatch = useDispatch();
         <>
             <div data-testid="calendar">
                 <WeeklyCalendar
-                    onWeekPick={handleWeekPick} j
-                    jumpToCurrentWeekRequired={true}
-                    onJumpToCurrentWeek={handleJumpToCurrentWeek}
+                    onWeekPick={handleWeekPick} 
+                    // jumpToCurrentWeekRequired={true}
+                    // onJumpToCurrentWeek={handleJumpToCurrentWeek}
                 />
             </div>
-            {/* <button onClick={getmeAdate}>date me</button> */}
+           
         </>
     )
 }
