@@ -33,7 +33,7 @@ function* addmeals(action){
 function* mealSaga() {
     yield takeLatest('FETCH_MEAL', getMeals);
 
-    yield takeLatest('ADD_MEAL', addmeals )
+    yield takeLatest('ADD_MEAL', addmeals );
 
     
 }
