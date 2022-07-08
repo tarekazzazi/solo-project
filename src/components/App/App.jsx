@@ -15,12 +15,13 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
-import HealthProfilePage from "../HealthProfilePage/HealthProfilePage";
+
 import MealPlan from "../MealPlan/MealPlan";
 import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import HealthInfoPage from "../HealthInfoPage/HealthInfoPage";
 
 import "./App.css";
 
@@ -71,12 +72,20 @@ function App() {
           </ProtectedRoute>
 
           {/* Tarek Added Componets here */}
-          <ProtectedRoute exact path="/mealplan">
+          <ProtectedRoute
+            // logged in shows MealPlan page
+            exact
+            path="/mealplan"
+          >
             <MealPlan />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/profile">
-            <HealthProfilePage />
+          <ProtectedRoute
+            // logged in shows HealthPage
+            exact
+            path="/healthInfo"
+          >
+            <HealthInfoPage />
           </ProtectedRoute>
 
           {/* /////////////////////END OF ADDED ROUTES/////////////////////// */}
