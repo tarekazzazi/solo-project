@@ -9,8 +9,8 @@ function* addhealthinfo(action) {
     console.log("error in health saga", err);
   }
 }
-function* userprofileSaga() {
+function* healthprofileSaga() {
   yield takeLatest("ADD_USER_HEALTH_INFO", addhealthinfo);
 }
 
-export default userprofileSaga;
+export default healthprofileSaga;

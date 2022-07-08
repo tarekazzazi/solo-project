@@ -15,6 +15,16 @@ function UserProfilePage() {
     console.log(wieght);
     console.log(carbLimit);
     console.log(doctorNotes);
+
+    dispatch({
+      type: "ADD_USER_HEALTH_INFO",
+      payload: {
+        name,
+        wieght,
+        carbLimit,
+        doctorNotes,
+      },
+    });
   }
   return (
     <div className="container">
