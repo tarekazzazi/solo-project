@@ -19,14 +19,26 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
+// Added Health Info to Register page
 router.post("/register", (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const name = req.body.name;
+  const weight = req.body.weight;
+  const carbLimit = req.body.carbLimit;
+  const doctorNotes = req.body.doctorNotes;
 
-  const queryText = `INSERT INTO "user" (username, password)
-    VALUES ($1, $2) RETURNING id`;
+  const queryText = `INSERT INTO "user" (username, password,name, wieght, max_carbs, doctor_notes)
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`;
   pool
-    .query(queryText, [username, password])
+    .query(queryText, [
+      username,
+      password,
+      name,
+      weight,
+      carbLimit,
+      doctorNotes,
+    ])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log("User registration failed: ", err);
