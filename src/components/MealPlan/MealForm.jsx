@@ -6,6 +6,7 @@ function MealForm() {
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date);
+  const user = useSelector((store) => store.user);
   // Sets state of Meal Form variables
 
   function handleSubmit(evt) {
@@ -17,6 +18,7 @@ function MealForm() {
     dispatch({
       type: "ADD_MEAL",
       payload: {
+        user: user.id,
         type,
         carbs,
         meal_name,

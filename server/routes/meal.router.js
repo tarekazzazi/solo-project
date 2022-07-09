@@ -29,12 +29,13 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
   const sqlQuery = ` 
-  INSERT INTO meals (meal_name, meal_type, carbs, notes, date)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO meals (user_id, meal_name, meal_type, carbs, notes, date)
+  VALUES ($1, $2, $3, $4, $5, $6)
   `;
 
   console.log("req.body", req.body.meal_name);
   const sqlParams = [
+    req.body.user,
     req.body.meal_name,
     req.body.type,
     req.body.carbs,
