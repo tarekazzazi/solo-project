@@ -54,13 +54,25 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-module.exports = router;
-
 // Delete Route
 
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
+  console.log("body is", req.user.id);
+  sqlQuery = `
+  DELETE FROM "meals" 
+  WHERE id = $1
+  AND user_id = $2
+  RETURNING *; 
+  `;
+
+  req.params.id = Number(req.params.id);
+
+  sqlParams = [req.params.id, req.user.id];
+
+  console.log("sql params are", req.params.id);
+  console.log("SQL Qurey is", req.user.id);
   pool
-    .query('DELETE FROM "meals" WHERE id=$1', [req.params.id])
+    .query(sqlQuery, sqlParams)
     .then((result) => {
       res.sendStatus(200);
     })
@@ -69,3 +81,5 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
+module.exports = router;

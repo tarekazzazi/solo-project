@@ -15,8 +15,16 @@ function* getMeals() {
     console.log("Meal get request failed", error);
   }
 }
-function* deletemeal() {
-  console.log("made it to delete meal saga");
+function* deletemeal(action) {
+  try {
+    console.log("made it to delete meal saga", action.payload.mealId);
+    yield axios.delete(`/api/meals/${action.payload.mealId}`);
+    // yield put({
+    //   type: "FETCH_MEAL",
+    // });
+  } catch (err) {
+    console.log("error in delete saga", err);
+  }
 }
 
 function* addmeals(action) {

@@ -19,12 +19,17 @@ function MealPlan() {
     });
   }, []);
 
-  function deleteMealTableRow() {
-    console.log("Hello");
+  const deleteMealTableRow = (id) => {
+    console.log("Hello", id);
+
     dispatch({
       type: "DELETE_MEAL",
+      payload: {
+        mealId: id,
+      },
     });
-  }
+  };
+
   return (
     <div className="container">
       <p>Meal planner</p>
@@ -70,7 +75,9 @@ function MealPlan() {
                     <td>
                       <input type="checkbox" />
                       {/* <button>Edit</button> */}
-                      <button onClick={deleteMealTableRow}>Delete</button>
+                      <button onClick={() => deleteMealTableRow(meal.id)}>
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
