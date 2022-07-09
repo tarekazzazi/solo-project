@@ -20,6 +20,7 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
+
         name: name,
         weight: weight,
         carbLimit: carbLimit,
@@ -59,6 +60,7 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
+        <br />
         {/*  HEALTH INFO (EDITABLE)  */}
         <label htmlFor="text">Name:</label>
         <input

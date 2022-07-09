@@ -6,15 +6,32 @@ function MealForm() {
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date);
+  // Sets state of Meal Form variables
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    console.log("Select date", selecteDate);
+
+    // move to dispatch to top
+    console.log("In mealform");
+    dispatch({
+      type: "ADD_MEAL",
+      payload: {
+        type,
+        carbs,
+        meal_name,
+        selecteDate,
+      },
+    });
+  }
   const [selecteDate, setSelectedDate] = useState("");
   const [day, setDayOfWeek] = useState("");
   const [type, setMealType] = useState("Breakfest");
   const [carbs, setTotalCarbs] = useState(0);
   const [meal_name, setMealName] = useState("");
 
-  // checks to see if date === "Monday"
-  // startDate is always a Monday of each week
+  // checks to see if day === "Monday"
+  // startDate is always a Monday of the selected week
   // If true returns the startDate of the week
   // If Its any other day than monday it adds a day to the start date till it reachs wednesday or thursday or friday etc...
   function renderDate(startDate, day) {
@@ -46,32 +63,6 @@ function MealForm() {
     return mealdate;
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    console.log("Select date", selecteDate);
-    // function addDays(date, days) {
-
-    //     // Calculates new date here
-    //     let result = new Date(date);
-    //     result.setDate(result.getDate() + days);
-    //     // console.log(result);
-
-    //     return (result);
-    // }
-
-    // move to dispatch to top
-    console.log("In mealform");
-    dispatch({
-      type: "ADD_MEAL",
-      payload: {
-        type,
-        carbs,
-        meal_name,
-        selecteDate,
-      },
-    });
-  }
-
   return (
     <>
       <div>
@@ -84,7 +75,7 @@ function MealForm() {
               setMealName(e.target.value);
             }}
           />
-
+          {/* SETS MEAL NAME TO STATE   */}
           <label htmlFor="type">Meal Type:</label>
           <select
             name="type"
@@ -97,7 +88,7 @@ function MealForm() {
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
           </select>
-
+          {/* SELECTS DAY OF WEEK AND SETS TO STATE VARIABLE */}
           <label htmlFor="date"> Day:</label>
           <select
             id="day"
@@ -117,7 +108,7 @@ function MealForm() {
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
           </select>
-
+          {/* SETS TOTAL CARBS FOR WEEK */}
           <label htmlFor="total"> meal total carbs:</label>
           <input
             id="total"

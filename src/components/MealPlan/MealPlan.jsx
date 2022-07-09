@@ -18,6 +18,13 @@ function MealPlan() {
       type: "FETCH_MEAL",
     });
   }, []);
+
+  function deleteMealTableRow() {
+    console.log("Hello");
+    dispatch({
+      type: "DELETE_MEAL",
+    });
+  }
   return (
     <div className="container">
       <p>Meal planner</p>
@@ -62,8 +69,8 @@ function MealPlan() {
                     <td className="tableCell">{meal.notes}</td>
                     <td>
                       <input type="checkbox" />
-                      <button>Edit</button>
-                      <button>Delete</button>
+                      {/* <button>Edit</button> */}
+                      <button onClick={deleteMealTableRow}>Delete</button>
                     </td>
                   </tr>
                 );
