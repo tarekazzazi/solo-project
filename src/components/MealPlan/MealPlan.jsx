@@ -1,25 +1,15 @@
 import "./Styles/MealPlan.css";
 import "./MealPlanDetail";
 import Calender from "./Calander";
-// import EditDetail from "./ToggleEditMeal/EditDetail";
-// import ReadOnlyRow from "./ToggleEditMeal/ReadOnlyRow";
 import MealRow from "./ToggleEditMeal/MealRow";
 import MealForm from "./MealForm";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Fragment } from "react";
 
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
-  // const [editMeal, setEditMeal] = useState();
-
-  // function toggleEdit() {
-  //   setEditMeal(!editMeal);
-  // }
-
-  // console.log("edit meal found", editMeal);
 
   console.log("the meals are", meals);
   useEffect(() => {
@@ -64,16 +54,7 @@ function MealPlan() {
             <tbody className="mealBody">
               {meals &&
                 meals.map((meal) => {
-                  return (
-                    <MealRow key={meal.id} meal={meal} />
-                    // <Fragment>
-                    //   {editMeal === false ? (
-                    //     <EditDetail meal={meal} />
-                    //   ) : (
-                    //     <ReadOnlyRow meal={meal} toggleEdit={toggleEdit} />
-                    //   )}
-                    // </Fragment>
-                  );
+                  return <MealRow key={meal.id} meal={meal} />;
                 })}
             </tbody>
           </table>

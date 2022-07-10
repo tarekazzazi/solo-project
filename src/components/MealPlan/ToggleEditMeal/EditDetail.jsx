@@ -25,13 +25,6 @@ function editmealTable({ meal }) {
     });
   };
 
-  // function updateMeal({
-  //     mealId: meal.id,
-  //     meal: meal.meal_name,
-  //     type: meal.meal_type,
-  //     carbs: meal.carbs,
-  //   })
-
   return (
     <>
       <tr>

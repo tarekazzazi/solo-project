@@ -1,4 +1,4 @@
-// EXAMPLE OF A DETAIL
+// EXAMPLE OF A DETAIL VIEW
 
 /* 
 Monday    | Meal   | Carbs| Blood Sugar Level (input can be added here and saved to table)
