@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-function ReadOnlyRow({ meal }) {
+function ReadOnlyRow({ meal, toggleEdit }) {
   const dispatch = useDispatch();
+
+  const editMeal = () => {
+    toggleEdit();
+  };
 
   const deleteMealTableRow = (id) => {
     console.log("Hello", id);
@@ -16,7 +20,7 @@ function ReadOnlyRow({ meal }) {
   };
   return (
     <tr key={meal.id}>
-      <th>{meal.date}</th>
+      <td>{meal.date}</td>
 
       <td className="tableCell">{meal.meal_name}</td>
       <td className="tableCell">{meal.meal_type}</td>
@@ -25,9 +29,9 @@ function ReadOnlyRow({ meal }) {
       <td className="tableCell">{meal.notes}</td>
       <td>
         <input type="checkbox" />
-        <Link to="/EditDetail">
-          <button>Edit</button>
-        </Link>
+
+        <button onClick={editMeal}>Edit</button>
+
         <button onClick={() => deleteMealTableRow(meal.id)}>Delete</button>
       </td>
     </tr>

@@ -97,13 +97,13 @@ function App() {
             <EditInfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // allows user to edit there information
             exact
             path="/EditDetail"
           >
             <EditMealTable />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           {/* /////////////////////END OF ADDED ROUTES/////////////////////// */}
 

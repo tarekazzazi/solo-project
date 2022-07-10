@@ -5,13 +5,20 @@ import EditDetail from "./EditDetail";
 import ReadOnlyRow from "./ReadOnlyRow";
 import MealForm from "./MealForm";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Fragment } from "react";
 
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
+  const [editMeal, setEditMeal] = useState();
+
+  function toggleEdit() {
+    setEditMeal(!editMeal);
+  }
+
+  console.log("edit meal found", editMeal);
 
   console.log("the meals are", meals);
   useEffect(() => {
@@ -57,10 +64,17 @@ function MealPlan() {
               {meals &&
                 meals.map((meal) => {
                   return (
+                    // <>
+                    //   <EditDetail />
+
+                    //   <ReadOnlyRow meal={meal} toggleEdit={toggleEdit} />
+                    // </>
                     <Fragment>
-                      {" "}
-                      <EditDetail />
-                      <ReadOnlyRow meal={meal} />
+                      {editMeal === false ? (
+                        <EditDetail />
+                      ) : (
+                        <ReadOnlyRow meal={meal} toggleEdit={toggleEdit} />
+                      )}
                     </Fragment>
                   );
                 })}
