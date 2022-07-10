@@ -1,11 +1,14 @@
 import EditSingleRow from "./MealRow";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-function editmealTable() {
+function editmealTable({ meal }) {
   const dispatch = useDispatch();
-  const meals = useSelector((store) => store.meal);
+  console.log("meal is", meal);
 
+  const [mealName, setMealName] = useState(meal.meal_name);
+  const [mealType, setMealType] = useState(meal.meal_type);
+  const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
   const updateMeal = () => {
     console.log("tablecelll is");
 
@@ -34,12 +37,14 @@ function editmealTable() {
             required="required"
             placeholder="Enter a meal name"
             name="mealName"
+            value={mealName}
           />
         </td>
         <td>
           <select
             name="type"
             id="mealType"
+            value={mealType}
             // onChange={(e) => {
             //   setMealType(e.target.value);
             // }}
@@ -55,6 +60,8 @@ function editmealTable() {
             type="number"
             min="0"
             name="carbs"
+            placeholder="enter total carbs"
+            value={totalMealCarbs}
             // onChange={(e) => {
             //   setTotalCarbs(Number(e.target.value));
             // }}
