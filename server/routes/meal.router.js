@@ -86,22 +86,27 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
 // Put Route
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   // endpoint functionality
-  // const sqlQuery = ` UPDATE meals
-  // SET meal_name= $2
-  // WHERE id = $1
-  // `;
-  // // `;
-  // const sqlParams = [];
-  // console.log("req.body is", sqlParams);
-  // pool
-  //   .query(sqlQuery, sqlParams)
-  //   .then((dbRes) => {
-  //     res.sendStatus(201);
-  //   })
-  //   .catch((err) => {
-  //     console.log("Err in PUT", err);
-  //     res.sendStatus(500);
-  //   });
+  const sqlQuery = ` UPDATE meals
+  SET meal_name= $2 , meal_type= $3 , carbs= $4
+  WHERE id = $1
+  `;
+
+  const sqlParams = [
+    req.body.mealId,
+    req.body.mealName,
+    req.body.mealType,
+    req.body.totalMealCarbs,
+  ];
+  console.log("req.body is", sqlParams);
+  pool
+    .query(sqlQuery, sqlParams)
+    .then((dbRes) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("Err in PUT", err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

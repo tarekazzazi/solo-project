@@ -20,8 +20,8 @@ function editmealTable({ meal }) {
       payload: {
         mealId,
         mealName,
-        // mealType,
-        // totalMealCarbs,
+        mealType,
+        totalMealCarbs,
       },
     });
   };
