@@ -86,8 +86,13 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
 // Put Route
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   // endpoint functionality
-  // const sqlQuery = ``;
+  // const sqlQuery = ` UPDATE meals
+  // SET meal_name= $2
+  // WHERE id = $1
+  // `;
+  // // `;
   // const sqlParams = [];
+  // console.log("req.body is", sqlParams);
   // pool
   //   .query(sqlQuery, sqlParams)
   //   .then((dbRes) => {

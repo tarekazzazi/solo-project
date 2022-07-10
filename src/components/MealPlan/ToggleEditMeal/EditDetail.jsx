@@ -1,6 +1,7 @@
 import EditSingleRow from "./MealRow";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function editmealTable({ meal }) {
   const dispatch = useDispatch();
@@ -9,15 +10,18 @@ function editmealTable({ meal }) {
   const [mealName, setMealName] = useState(meal.meal_name);
   const [mealType, setMealType] = useState(meal.meal_type);
   const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
+  const mealId = meal.id;
+  const user = useSelector((store) => store.user.id);
 
   const updateMeal = (e) => {
     e.preventDefault();
     dispatch({
       type: "UPDATE_MEAL",
       payload: {
+        mealId,
         mealName,
-        mealType,
-        totalMealCarbs,
+        // mealType,
+        // totalMealCarbs,
       },
     });
   };

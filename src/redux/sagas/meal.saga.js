@@ -43,10 +43,10 @@ function* updatemeal(action) {
   try {
     console.log("action is", action.payload);
 
-    // yield axios.put(`/api/meals/${action.payload.tableRow.mealId}`);
+    yield axios.put(`/api/meals/${action.payload.mealId}`, action.payload);
     // yield put({
     //   type: "FETCH_MEAL",
-    // });z
+    // });
   } catch (err) {
     console.log("error in update meal", err);
   }
