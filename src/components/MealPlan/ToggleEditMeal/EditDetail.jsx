@@ -13,8 +13,7 @@ function editmealTable({ meal }) {
   const mealId = meal.id;
   const user = useSelector((store) => store.user.id);
 
-  const updateMeal = (e) => {
-    e.preventDefault();
+  const updateMeal = () => {
     dispatch({
       type: "UPDATE_MEAL",
       payload: {

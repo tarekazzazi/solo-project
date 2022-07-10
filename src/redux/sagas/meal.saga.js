@@ -44,9 +44,9 @@ function* updatemeal(action) {
     console.log("action is", action.payload);
 
     yield axios.put(`/api/meals/${action.payload.mealId}`, action.payload);
-    // yield put({
-    //   type: "FETCH_MEAL",
-    // });
+    yield put({
+      type: "FETCH_MEAL",
+    });
   } catch (err) {
     console.log("error in update meal", err);
   }
