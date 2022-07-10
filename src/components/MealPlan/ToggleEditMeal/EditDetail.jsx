@@ -1,4 +1,4 @@
-import MealForm from "./MealForm";
+import EditSingleRow from "./MealRow";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -6,23 +6,24 @@ function editmealTable() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
 
-  // const updateMeal = (tableRow) => {
-  //     console.log("tablecelll is", tableRow);
+  const updateMeal = () => {
+    console.log("tablecelll is");
 
-  // dispatch({
-  //   type: "UPDATE_MEAL",
-  //   payload: {
-  //     tableRow,
-  //   },
-  // });
-  //   };
-
+    // dispatch({
+    //   type: "UPDATE_MEAL",
+    //   payload: {
+    //     tableRow,
+    //   },
+    // });
+    //   };
+  };
   // function updateMeal({
   //     mealId: meal.id,
   //     meal: meal.meal_name,
   //     type: meal.meal_type,
   //     carbs: meal.carbs,
   //   })
+
   return (
     <>
       <tr>
@@ -58,6 +59,9 @@ function editmealTable() {
             //   setTotalCarbs(Number(e.target.value));
             // }}
           />
+        </td>
+        <td>
+          <button onClick={updateMeal}>Save</button>
         </td>
       </tr>
     </>

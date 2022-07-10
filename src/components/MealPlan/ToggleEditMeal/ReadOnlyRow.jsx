@@ -18,6 +18,7 @@ function ReadOnlyRow({ meal, toggleEdit }) {
       },
     });
   };
+
   return (
     <tr key={meal.id}>
       <td>{meal.date}</td>
