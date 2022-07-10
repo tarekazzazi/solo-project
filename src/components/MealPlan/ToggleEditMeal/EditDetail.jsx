@@ -9,17 +9,19 @@ function editmealTable({ meal }) {
   const [mealName, setMealName] = useState(meal.meal_name);
   const [mealType, setMealType] = useState(meal.meal_type);
   const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
-  const updateMeal = () => {
-    console.log("tablecelll is");
 
-    // dispatch({
-    //   type: "UPDATE_MEAL",
-    //   payload: {
-    //     tableRow,
-    //   },
-    // });
-    //   };
+  const updateMeal = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "UPDATE_MEAL",
+      payload: {
+        mealName,
+        mealType,
+        totalMealCarbs,
+      },
+    });
   };
+
   // function updateMeal({
   //     mealId: meal.id,
   //     meal: meal.meal_name,
@@ -38,6 +40,9 @@ function editmealTable({ meal }) {
             placeholder="Enter a meal name"
             name="mealName"
             value={mealName}
+            onChange={(e) => {
+              setMealName(e.target.value);
+            }}
           />
         </td>
         <td>
@@ -45,9 +50,9 @@ function editmealTable({ meal }) {
             name="type"
             id="mealType"
             value={mealType}
-            // onChange={(e) => {
-            //   setMealType(e.target.value);
-            // }}
+            onChange={(e) => {
+              setMealType(e.target.value);
+            }}
           >
             <option value="Breakfest">Breakfest</option>
             <option value="Lunch">Lunch</option>
@@ -62,9 +67,9 @@ function editmealTable({ meal }) {
             name="carbs"
             placeholder="enter total carbs"
             value={totalMealCarbs}
-            // onChange={(e) => {
-            //   setTotalCarbs(Number(e.target.value));
-            // }}
+            onChange={(e) => {
+              setTotalMealCarbs(Number(e.target.value));
+            }}
           />
         </td>
         <td>

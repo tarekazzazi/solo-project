@@ -10,8 +10,6 @@ function singleMealRow({ meal }) {
   }
   return (
     <>
-      <h5>Editing single row</h5>
-
       <Fragment>
         {editMeal === false ? (
           <EditDetail meal={meal} />
