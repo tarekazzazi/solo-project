@@ -22,7 +22,8 @@ import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import HealthInfoPage from "../HealthInfoPage/HealthInfoPage";
-
+import EditInfoPage from "../HealthInfoPage/EditHealthInfoPage";
+import EditMealTable from "../MealPlan/EditDetail";
 import "./App.css";
 
 function App() {
@@ -86,6 +87,22 @@ function App() {
             path="/healthInfo"
           >
             <HealthInfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // allows user to edit there information
+            exact
+            path="/editform"
+          >
+            <EditInfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // allows user to edit there information
+            exact
+            path="/EditDetail"
+          >
+            <EditMealTable />
           </ProtectedRoute>
 
           {/* /////////////////////END OF ADDED ROUTES/////////////////////// */}

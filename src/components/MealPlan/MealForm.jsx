@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import currenDate from "./Calander";
 
 function MealForm() {
+  const [selecteDate, setSelectedDate] = useState("");
+  const [day, setDayOfWeek] = useState("");
+  const [type, setMealType] = useState("Breakfest");
+  const [carbs, setTotalCarbs] = useState(0);
+  const [meal_name, setMealName] = useState("");
+
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date);
@@ -26,11 +32,6 @@ function MealForm() {
       },
     });
   }
-  const [selecteDate, setSelectedDate] = useState("");
-  const [day, setDayOfWeek] = useState("");
-  const [type, setMealType] = useState("Breakfest");
-  const [carbs, setTotalCarbs] = useState(0);
-  const [meal_name, setMealName] = useState("");
 
   // checks to see if day === "Monday"
   // startDate is always a Monday of the selected week
@@ -72,6 +73,7 @@ function MealForm() {
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Meal Name:</label>
           <input
+            name="mealName"
             type="text"
             onChange={(e) => {
               setMealName(e.target.value);
@@ -116,6 +118,7 @@ function MealForm() {
             id="total"
             type="number"
             min="0"
+            name="carbs"
             onChange={(e) => {
               setTotalCarbs(Number(e.target.value));
             }}

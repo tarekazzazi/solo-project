@@ -1,10 +1,13 @@
 import "./Styles/MealPlan.css";
 import "./MealPlanDetail";
 import Calender from "./Calander";
+import EditDetail from "./EditDetail";
+import ReadOnlyRow from "./ReadOnlyRow";
+import MealForm from "./MealForm";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import MealForm from "./MealForm";
+import { Fragment } from "react";
 
 function MealPlan() {
   const dispatch = useDispatch();
@@ -19,20 +22,9 @@ function MealPlan() {
     });
   }, []);
 
-  const deleteMealTableRow = (id) => {
-    console.log("Hello", id);
-
-    dispatch({
-      type: "DELETE_MEAL",
-      payload: {
-        mealId: id,
-      },
-    });
-  };
-
   return (
     <div className="container">
-      <p>Meal planner</p>
+      <h2>Weekly Meal Plan</h2>
 
       <div className="navBar2">
         <FaArrowAltCircleLeft />
@@ -47,43 +39,34 @@ function MealPlan() {
 
       {/* //////////////////MEAL TABLE/////////////////////////// */}
       <div className="mealTableContainer">
-        <table>
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Meal</th>
-              <th>Type</th>
-              <th>Carbs</th>
-              <th>Blood sugar level</th>
-              <th>Notes</th>
-              <th> </th>
-            </tr>
-          </thead>
+        <form>
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Meal</th>
+                <th>Type</th>
+                <th>Carbs</th>
+                <th>Blood sugar level</th>
+                <th>Notes</th>
+                <th> </th>
+              </tr>
+            </thead>
 
-          <tbody className="mealBody">
-            {meals &&
-              meals.map((meal) => {
-                return (
-                  <tr key={meal.id}>
-                    <th>{meal.date}</th>
-
-                    <td className="tableCell">{meal.meal_name}</td>
-                    <td className="tableCell">{meal.meal_type}</td>
-                    <td className="tableCell">{meal.carbs}</td>
-                    <td className="tableCell">{meal.blood_sugar_lvl}</td>
-                    <td className="tableCell">{meal.notes}</td>
-                    <td>
-                      <input type="checkbox" />
-                      {/* <button>Edit</button> */}
-                      <button onClick={() => deleteMealTableRow(meal.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+            <tbody className="mealBody">
+              {meals &&
+                meals.map((meal) => {
+                  return (
+                    <Fragment>
+                      {" "}
+                      <EditDetail />
+                      <ReadOnlyRow meal={meal} />
+                    </Fragment>
+                  );
+                })}
+            </tbody>
+          </table>
+        </form>
       </div>
       {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
 

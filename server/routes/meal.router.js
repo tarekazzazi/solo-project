@@ -83,4 +83,20 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+// Put Route
+router.put("/:id", rejectUnauthenticated, (req, res) => {
+  // endpoint functionality
+  // const sqlQuery = ``;
+  // const sqlParams = [];
+  // pool
+  //   .query(sqlQuery, sqlParams)
+  //   .then((dbRes) => {
+  //     res.sendStatus(201);
+  //   })
+  //   .catch((err) => {
+  //     console.log("Err in PUT", err);
+  //     res.sendStatus(500);
+  //   });
+});
+
 module.exports = router;

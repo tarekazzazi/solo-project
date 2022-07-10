@@ -39,12 +39,27 @@ function* addmeals(action) {
   }
 }
 
+function* updatemeal(action) {
+  try {
+    console.log("action is", action.payload.tableRow.mealId);
+
+    yield axios.put(`/api/meals/${action.payload.tableRow.mealId}`);
+    // yield put({
+    //   type: "FETCH_MEAL",
+    // });z
+  } catch (err) {
+    console.log("error in update meal", err);
+  }
+}
+
 function* mealSaga() {
   yield takeLatest("FETCH_MEAL", getMeals);
 
   yield takeLatest("ADD_MEAL", addmeals);
 
   yield takeLatest("DELETE_MEAL", deletemeal);
+
+  yield takeLatest("UPDATE_MEAL", updatemeal);
 }
 
 export default mealSaga;
