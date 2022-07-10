@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import LogOutButton from "../LogOutButton/LogOutButton";
+import "./Nav.css";
+import { useSelector } from "react-redux";
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -32,8 +32,8 @@ function Nav() {
               Info Page
             </Link>
             {/* //////////TAREK ADDED CODE HERE////////////// */}
-            <Link className="navLink" to="/profile">
-              Profile Page
+            <Link className="navLink" to="/healthInfo">
+              HealthInfo Page
             </Link>
 
             <Link className="navLink" to="/mealplan">
