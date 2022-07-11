@@ -15,6 +15,10 @@ function* getMeals() {
     console.log("Meal get request failed", error);
   }
 }
+// pulls in the action.payload
+// which is the meal.id
+// makes a axios delete call with a link of /api/meals/${action.payload.mealId}
+// the yield put gets all the meals from the database again by calling getMeals saga
 function* deletemeal(action) {
   try {
     console.log("made it to delete meal saga", action.payload.mealId);

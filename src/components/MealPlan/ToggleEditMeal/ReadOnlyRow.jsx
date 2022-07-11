@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 function ReadOnlyRow({ meal, toggleEdit }) {
   const dispatch = useDispatch();
-
+  // on edit button click run function toggleEdit
   const editMeal = () => {
     toggleEdit();
   };
-
+  // passes in meal.id
+  // dispatchs meal.id as mealId to mealSaga
   const deleteMealTableRow = (id) => {
     console.log("Hello", id);
 

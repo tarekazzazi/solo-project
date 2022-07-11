@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function editmealTable({ meal }) {
+  // Passing in meal Obj prop
+  // set meal obj data to default value on Inputs
   const dispatch = useDispatch();
   console.log("meal is", meal);
 
@@ -11,7 +13,6 @@ function editmealTable({ meal }) {
   const [mealType, setMealType] = useState(meal.meal_type);
   const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
   const mealId = meal.id;
-  const user = useSelector((store) => store.user.id);
 
   const updateMeal = () => {
     dispatch({
