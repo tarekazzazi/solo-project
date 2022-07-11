@@ -46,6 +46,32 @@ router.post("/register", (req, res, next) => {
     });
 });
 
+router.put("/:id", rejectUnauthenticated, (req, res) => {
+  console.log("req.body is", req.body.name);
+  const sqlQuery = `UPDATE "user"
+  SET name= $2 , wieght= $3 , max_carbs= $4 , doctor_notes= $5
+  WHERE id= $1
+  `;
+
+  const sqlParams = [
+    req.body.userId,
+    req.body.name,
+    req.body.wieght,
+    req.body.max_carbs,
+    req.body.doctor_notes,
+  ];
+
+  pool
+    .query(sqlQuery, sqlParams)
+    .then((dbRes) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("Err in PUT", err);
+      res.sendStatus(500);
+    });
+});
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful

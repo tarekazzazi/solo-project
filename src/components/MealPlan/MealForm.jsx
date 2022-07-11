@@ -12,12 +12,12 @@ function MealForm() {
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date);
+  console.log("selectdate is", startDate);
   const user = useSelector((store) => store.user);
   // Sets state of Meal Form variables
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log("Select date", selecteDate);
 
     // move to dispatch to top
     console.log("In mealform");
@@ -31,6 +31,9 @@ function MealForm() {
         selecteDate,
       },
     });
+
+    evt.target.reset();
+    console.log("Select date", selecteDate);
   }
 
   // checks to see if day === "Monday"

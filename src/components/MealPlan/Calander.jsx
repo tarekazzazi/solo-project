@@ -8,7 +8,7 @@ function Calender() {
 
   const handleWeekPick = (startDate) => {
     console.log(`${startDate} `);
-    startDate;
+
     dispatch({
       type: "ADD_DATE",
       payload: startDate,
