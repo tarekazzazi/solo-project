@@ -1,3 +1,9 @@
 .container {
   margin: 1em;
 }
+
+textarea {
+  height: 250px;
+  width: 100%;
+  resize: none;
+}
