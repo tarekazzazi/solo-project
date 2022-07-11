@@ -10,14 +10,15 @@ function EditInfoPage({ toggleEdit }) {
   return (
     <div className="container">
       <h2>My Health Info</h2>
+      <ul>
+        <li>Welcome, {user.name}</li>
 
-      <p>Welcome, {user.name}</p>
+        <li> You currently weigh: {user.wieght} lbs </li>
 
-      <p> You currently weigh: {user.wieght} lbs </p>
+        <li>Carb Limtit: {user.max_carbs}</li>
 
-      <p>Carb Limtit: {user.max_carbs}</p>
-
-      <p>{user.doctor_notes}</p>
+        <li>{user.doctor_notes}</li>
+      </ul>
 
       <div>
         <button onClick={EditHealthInfo}> Edit </button>
