@@ -21,8 +21,7 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import HealthInfoPage from "../HealthInfoPage/HealthInfoPage";
-import EditInfoPage from "../HealthInfoPage/EditHealthInfoPage";
+import SingleRow from "../HealthInfoPage/SingleRow";
 import "./App.css";
 
 function App() {
@@ -85,15 +84,7 @@ function App() {
             exact
             path="/healthInfo"
           >
-            <HealthInfoPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // allows user to edit there information
-            exact
-            path="/editform"
-          >
-            <EditInfoPage />
+            <SingleRow />
           </ProtectedRoute>
 
           {/* /////////////////////END OF ADDED ROUTES/////////////////////// */}
