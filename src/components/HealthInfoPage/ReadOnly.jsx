@@ -15,7 +15,7 @@ function EditInfoPage({ toggleEdit }) {
 
         <li> You currently weigh: {user.wieght} lbs </li>
 
-        <li>Carb Limtit: {user.max_carbs}</li>
+        <li>Carb Limit: {user.max_carbs}</li>
 
         <li>{user.doctor_notes}</li>
       </ul>

@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
+  const userMaxCarbs = useSelector((store) => store.user);
 
   console.log("the meals are", meals);
   useEffect(() => {
@@ -31,7 +32,7 @@ function MealPlan() {
           <Calender />
         </div>
 
-        <label>Max Carb Intake: 210/GMs </label>
+        <label>Max Carb Intake: {userMaxCarbs.max_carbs} </label>
         <FaArrowCircleRight />
       </div>
 
