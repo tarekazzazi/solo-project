@@ -24,8 +24,16 @@ function* fetchUser() {
   }
 }
 
+function* updateUserHealthInfo() {
+  try {
+    console.log("hello");
+  } catch {}
+}
+
 function* userSaga() {
   yield takeLatest("FETCH_USER", fetchUser);
+
+  yield takeLatest("UPDATE_USER_HEALTH_INFO", updateUserHealthInfo);
 }
 
 export default userSaga;

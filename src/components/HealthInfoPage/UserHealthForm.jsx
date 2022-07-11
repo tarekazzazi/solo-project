@@ -14,6 +14,15 @@ function HealthInfoPage() {
 
   const updateHealthInfo = () => {
     console.log("updating user info ");
+    dispatch({
+      type: "UPDATE_USER_HEALTH_INFO",
+      payload: {
+        name: nickname,
+        wieght: weight,
+        max_carbs: maxCarbs,
+        doctor_notes: doctorNotes,
+      },
+    });
   };
 
   return (
