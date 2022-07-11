@@ -1,11 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import "./Styles/HealthInfoPage.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+
 function HealthInfoPage() {
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
-  const EditHealthInfo = () => {
-    console.log("hello");
+  const [nickname, setNickName] = useState(user.name);
+  const [weight, setWeight] = useState(user.wieght);
+  const [maxCarbs, setMaxCarbs] = useState(user.max_carbs);
+  const [doctorNotes, setDoctorNotes] = useState(user.doctor_notes);
+
+  const updateHealthInfo = () => {
+    console.log("updating user info ");
   };
 
   return (
@@ -17,8 +25,11 @@ function HealthInfoPage() {
           <input
             type="text"
             required="required"
-            placeholder="Enter a new nickName"
-            value={user.name}
+            placeholder="Enter a new nickname"
+            value={nickname}
+            onChange={(e) => {
+              setNickName(e.target.value);
+            }}
           />
         </li>
 
@@ -28,18 +39,24 @@ function HealthInfoPage() {
             type="number"
             required="required"
             placeholder="Enter your weight"
-            value={user.wieght}
+            value={weight}
+            onChange={(e) => {
+              setWeight(e.target.value);
+            }}
           />
           lbs
         </li>
 
         <li>
-          Carb Limtit:{" "}
+          Carb Limit:{" "}
           <input
             type="number"
             required="required"
-            placeholder="Enter your weekly carb limit"
-            value={user.max_carbs}
+            placeholder="Weekly carb limit"
+            value={maxCarbs}
+            onChange={(e) => {
+              setMaxCarbs(e.target.value);
+            }}
           />
         </li>
 
@@ -47,14 +64,17 @@ function HealthInfoPage() {
           <textarea
             type="text"
             required="required"
-            placeholder="any new notes"
-            value={user.doctor_notes}
+            placeholder="Doctor Notes"
+            value={doctorNotes}
+            onChange={(e) => {
+              setDoctorNotes(e.target.value);
+            }}
           />
         </li>
       </ul>
 
       <div>
-        <button onClick={EditHealthInfo}> Save </button>
+        <button onClick={updateHealthInfo}> Save </button>
       </div>
     </div>
   );
