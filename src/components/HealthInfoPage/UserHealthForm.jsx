@@ -17,6 +17,7 @@ function HealthInfoPage() {
     dispatch({
       type: "UPDATE_USER_HEALTH_INFO",
       payload: {
+        userId: user.id,
         name: nickname,
         wieght: weight,
         max_carbs: maxCarbs,

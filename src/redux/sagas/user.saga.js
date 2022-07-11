@@ -24,10 +24,13 @@ function* fetchUser() {
   }
 }
 
-function* updateUserHealthInfo() {
+function* updateUserHealthInfo(action) {
   try {
-    console.log("hello");
-  } catch {}
+    console.log("hello", action.payload.userId);
+    axios.put(`/api/user/${action.payload.userId}`, action.payload);
+  } catch (error) {
+    console.log("Error in update USER HEALTH INFO SAGA", error);
+  }
 }
 
 function* userSaga() {
