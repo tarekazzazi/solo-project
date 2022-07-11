@@ -28,6 +28,9 @@ function* updateUserHealthInfo(action) {
   try {
     console.log("hello", action.payload.userId);
     axios.put(`/api/user/${action.payload.userId}`, action.payload);
+    yield put({
+      type: "FETCH_USER",
+    });
   } catch (error) {
     console.log("Error in update USER HEALTH INFO SAGA", error);
   }
