@@ -3,6 +3,7 @@ import "./MealPlanDetail";
 import Calender from "./Calander";
 import MealRow from "./ToggleEditMeal/MealRow";
 import MealForm from "./MealForm";
+import CarbCalculate from "./Calculate/CarbCalculate";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -32,7 +33,9 @@ function MealPlan() {
           <Calender />
         </div>
 
-        <label>Max Carb Intake: {userMaxCarbs.max_carbs} </label>
+        <label>
+          Max Carb Intake: <CarbCalculate />{" "}
+        </label>
         <FaArrowCircleRight />
       </div>
 

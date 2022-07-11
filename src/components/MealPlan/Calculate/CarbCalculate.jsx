@@ -1,14 +1,11 @@
 import React from "react";
 
-
-function () {
-  
-
+function CalculateWeeklyTotalCarbs() {
   return (
     <>
-     
+      <h4>Made it to Calculate weekly Carbs</h4>
     </>
   );
 }
 
-export default ;
+export default CalculateWeeklyTotalCarbs;
