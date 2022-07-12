@@ -8,11 +8,18 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get("/", rejectUnauthenticated, (req, res) => {
+router.get("/:id", rejectUnauthenticated, (req, res) => {
   // GET route code here
-  const query = "SELECT * FROM meals";
+  const orderDate = req.params.id.split(",");
+
+  const query = `SELECT * FROM meals
+  WHERE date BETWEEN $1 AND $2
+  ORDER BY date ASC`;
+
+  console.log("routerGet STARTDATE", orderDate);
+  const sqlParams = [orderDate[0], orderDate[1]];
   pool
-    .query(query)
+    .query(query, sqlParams)
     .then((result) => {
       console.log("the result is", result);
       res.send(result.rows);

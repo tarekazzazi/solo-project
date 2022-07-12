@@ -1,9 +1,14 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-function* getMeals() {
+function* getMeals(action) {
   try {
-    const meals = yield axios.get("/api/meals");
+    const meals = yield axios({
+      method: "get",
+      url: `/api/meals/${action.payload.startDate},${action.payload.endDate}`,
+    });
+
+    console.log("get order dates action.payload ", action.payload);
 
     console.log("the response is", meals.data);
 
@@ -37,6 +42,10 @@ function* addmeals(action) {
     yield axios.post("/api/meals", action.payload);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
     });
   } catch (err) {
     console.log("error in add meals", err);

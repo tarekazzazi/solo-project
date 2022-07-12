@@ -11,7 +11,9 @@ function MealForm() {
 
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
-  const startDate = useSelector((store) => store.date);
+  const startDate = useSelector((store) => store.date.startDate);
+  const dateRange = useSelector((store) => store.date);
+
   console.log("selectdate is", startDate);
   const user = useSelector((store) => store.user);
   // Sets state of Meal Form variables
@@ -29,6 +31,8 @@ function MealForm() {
         carbs,
         meal_name,
         selecteDate,
+        startDate: dateRange.startDate,
+        endDate: dateRange.endDate,
       },
     });
 
