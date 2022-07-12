@@ -20,7 +20,7 @@ function Calender() {
       <div data-testid="calendar">
         <WeeklyCalendar
           onWeekPick={handleWeekPick}
-          // jumpToCurrentWeekRequired={true}
+          // // jumpToCurrentWeekRequired={true}
           // onJumpToCurrentWeek={handleJumpToCurrentWeek}
         />
       </div>

@@ -1,7 +1,6 @@
 import EditSingleRow from "./MealRow";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 function editmealTable({ meal }) {
   // Passing in meal Obj prop

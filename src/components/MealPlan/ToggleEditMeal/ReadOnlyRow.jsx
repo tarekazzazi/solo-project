@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 function ReadOnlyRow({ meal, toggleEdit }) {
@@ -22,7 +23,7 @@ function ReadOnlyRow({ meal, toggleEdit }) {
 
   return (
     <tr key={meal.id}>
-      <td>{meal.date}</td>
+      <td>{moment(meal.date).format("MM-DD-YYYY")}</td>
 
       <td className="tableCell">{meal.meal_name}</td>
       <td className="tableCell">{meal.meal_type}</td>
