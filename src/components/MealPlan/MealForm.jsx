@@ -12,7 +12,7 @@ function MealForm() {
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date.startDate);
-  const endDate = useSelector((store) => store.date.endDate);
+  const dateRange = useSelector((store) => store.date);
 
   console.log("selectdate is", startDate);
   const user = useSelector((store) => store.user);
@@ -31,6 +31,8 @@ function MealForm() {
         carbs,
         meal_name,
         selecteDate,
+        startDate: dateRange.startDate,
+        endDate: dateRange.endDate,
       },
     });
 

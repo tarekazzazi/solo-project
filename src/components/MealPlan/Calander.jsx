@@ -8,6 +8,7 @@ function Calender() {
   const dispatch = useDispatch();
   useEffect(() => {
     handleWeekPick();
+    
   }, []);
 
   const handleWeekPick = (startDate, endDate) => {

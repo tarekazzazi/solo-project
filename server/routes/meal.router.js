@@ -10,7 +10,7 @@ const router = express.Router();
  */
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   // GET route code here
-  const orderDate = req.params.id.split("-");
+  const orderDate = req.params.id.split(",");
 
   const query = `SELECT * FROM meals
   WHERE date BETWEEN $1 AND $2

@@ -1,14 +1,16 @@
 import "./Styles/MealPlan.css";
 import "./MealPlanDetail";
+
 import Calender from "./Calander";
 import MealRow from "./ToggleEditMeal/MealRow";
 import MealForm from "./MealForm";
 import CarbCalculate from "./Calculate/CarbCalculate";
 // import MealPlanDetail from "./MealPlanDetail";
+import moment from "moment";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
+
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
@@ -25,63 +27,91 @@ function MealPlan() {
   console.log("Array of dates", dateArray);
 
   console.log("the meals are", meals);
+
+  function addDays(date, days) {
+    // Calculates new date here
+    let result = new Date(date);
+    result.setDate(result.getDate() + days);
+    // console.log(result);
+    const mealdate = result;
+
+    return mealdate;
+  }
+
   useEffect(() => {
+
+
     console.log("In use Effect");
+    const currendate = new Date(); 
+    console.log('in meal page useEffect', moment(currendate).format("MM-DD-YYYY"));
+
+    const startDate = moment(currendate).format("MM-DD-YYYY")
+
+    const endDate = moment(addDays(new Date(startDate), 7)).format("MM-DD-YYYY");
+   console.log( moment(endDate).format("MM-DD-YYYY"));
+
+    
 
     dispatch({
       type: "FETCH_MEAL",
-      payload: orderDates,
+      payload: {
+      startDate,
+      endDate
+         
+      },
     });
   }, []);
 
   return (
-    <div className="container">
-      <h2>Weekly Meal Plan</h2>
+    // Object.keys(orderDates).length > 0 && 
+      <div className="container">
+        <h2>Weekly Meal Plan</h2>
 
-      <div className="navBar2">
-        <FaArrowAltCircleLeft />
-        <label htmlFor="date"> Week of:</label>
-        <div className="date">
-          <Calender />
+        <div className="navBar2">
+          <FaArrowAltCircleLeft />
+          <label htmlFor="date"> Week of:</label>
+          <div className="date">
+            <Calender />
+          </div>
+
+          <label>
+            Max Carb Intake: <CarbCalculate />{" "}
+          </label>
+          <FaArrowCircleRight />
         </div>
 
-        <label>
-          Max Carb Intake: <CarbCalculate />{" "}
-        </label>
-        <FaArrowCircleRight />
+        {/* //////////////////MEAL TABLE/////////////////////////// */}
+        <div className="mealTableContainer">
+          <form>
+            <table>
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Meal</th>
+                  <th>Type</th>
+                  <th>Carbs</th>
+                  <th>Blood sugar level</th>
+                  <th>Notes</th>
+                  <th> </th>
+                </tr>
+              </thead>
+
+              <tbody className="mealBody">
+                {meals &&
+                  meals.map((meal) => {
+                    return <MealRow key={meal.id} meal={meal} />;
+                  })}
+                {/* <MealPlanDetail /> */}
+              </tbody>
+            </table>
+          </form>
+        </div>
+        {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
+
+        {/* ////////////////Add A New Meal Form////////////////////////////////// */}
+        <MealForm />
       </div>
-
-      {/* //////////////////MEAL TABLE/////////////////////////// */}
-      <div className="mealTableContainer">
-        <form>
-          <table>
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Meal</th>
-                <th>Type</th>
-                <th>Carbs</th>
-                <th>Blood sugar level</th>
-                <th>Notes</th>
-                <th> </th>
-              </tr>
-            </thead>
-
-            <tbody className="mealBody">
-              {meals &&
-                meals.map((meal) => {
-                  return <MealRow key={meal.id} meal={meal} />;
-                })}
-              {/* <MealPlanDetail /> */}
-            </tbody>
-          </table>
-        </form>
-      </div>
-      {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
-
-      {/* ////////////////Add A New Meal Form////////////////////////////////// */}
-      <MealForm />
-    </div>
+    
   );
 }
 

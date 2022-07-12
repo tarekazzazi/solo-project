@@ -5,7 +5,7 @@ function* getMeals(action) {
   try {
     const meals = yield axios({
       method: "get",
-      url: `/api/meals/${action.payload.startDate}-${action.payload.endDate}`,
+      url: `/api/meals/${action.payload.startDate},${action.payload.endDate}`,
     });
 
     console.log("get order dates action.payload ", action.payload);
