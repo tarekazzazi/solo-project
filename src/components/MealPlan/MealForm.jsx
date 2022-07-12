@@ -11,10 +11,10 @@ function MealForm() {
 
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
-  const startDateTest = useSelector((store) => store.date.startDate);
+  const startDate = useSelector((store) => store.date.startDate);
   const endDate = useSelector((store) => store.date.endDate);
 
-  console.log("selectdate is", startDateTest);
+  console.log("selectdate is", startDate);
   const user = useSelector((store) => store.user);
   // Sets state of Meal Form variables
 
@@ -31,8 +31,6 @@ function MealForm() {
         carbs,
         meal_name,
         selecteDate,
-        endDate,
-        startDateTest,
       },
     });
 
