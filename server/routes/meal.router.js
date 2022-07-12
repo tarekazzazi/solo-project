@@ -28,6 +28,7 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
       console.log(`Uh oh there is a error, ${err}`);
       res.sendStatus(500);
     });
+    
 });
 
 /**
