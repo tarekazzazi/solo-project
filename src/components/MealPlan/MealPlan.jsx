@@ -8,15 +8,17 @@ import CarbCalculate from "./Calculate/CarbCalculate";
 import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import moment from "moment";
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
   const dateArray = useSelector((store) =>
     store.meal.map((meal) => {
-      return meal.date;
+      return moment(meal.date).format("MM-DD-YYYY");
     })
   );
+
+  const orderDates = useSelector((store) => store.date);
   // const result = dateArray.filter((date) => date.length > 6);
 
   // console.log("new ordered dates", result);
@@ -28,6 +30,7 @@ function MealPlan() {
 
     dispatch({
       type: "FETCH_MEAL",
+      payload: orderDates,
     });
   }, []);
 

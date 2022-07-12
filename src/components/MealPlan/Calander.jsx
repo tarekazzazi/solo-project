@@ -2,16 +2,24 @@ import React from "react";
 import { WeeklyCalendar } from "react-week-picker";
 import "react-week-picker/src/lib/calendar.css";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function Calender() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    handleWeekPick();
+  }, []);
 
-  const handleWeekPick = (startDate) => {
-    console.log(`${startDate} `);
+  const handleWeekPick = (startDate, endDate) => {
+    console.log(`${startDate}  ${endDate}`);
 
     dispatch({
       type: "ADD_DATE",
-      payload: startDate,
+      payload: { startDate, endDate },
+    });
+    dispatch({
+      type: "FETCH_MEAL",
+      payload: { startDate, endDate },
     });
   };
 
