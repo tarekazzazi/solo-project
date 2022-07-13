@@ -91,8 +91,9 @@ function MealPlan() {
                   <th>Type</th>
                   <th>Carbs</th>
                   <th>Blood sugar level</th>
-                  <th>Notes</th>
-                  <th> </th>
+                  <th></th>
+                  <th></th>
+                  
                 </tr>
               </thead>
 

@@ -30,6 +30,7 @@ function* deletemeal(action) {
     yield axios.delete(`/api/meals/${action.payload.mealId}`);
     yield put({
       type: "FETCH_MEAL",
+      
     });
   } catch (err) {
     console.log("error in delete saga", err);

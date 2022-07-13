@@ -95,7 +95,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   // endpoint functionality
   const sqlQuery = ` UPDATE meals
-  SET meal_name= $2 , meal_type= $3 , carbs= $4
+  SET meal_name= $2 , meal_type= $3 , carbs= $4 , blood_sugar_lvl= $5
   WHERE id = $1
   `;
 
@@ -104,6 +104,7 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     req.body.mealName,
     req.body.mealType,
     req.body.totalMealCarbs,
+    req.body.bloodSugarLvl,
   ];
   console.log("req.body is", sqlParams);
   pool

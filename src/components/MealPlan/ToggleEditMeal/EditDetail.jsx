@@ -11,6 +11,7 @@ function editmealTable({ meal }) {
   const [mealName, setMealName] = useState(meal.meal_name);
   const [mealType, setMealType] = useState(meal.meal_type);
   const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
+  const [bloodSugarLvl, setBloodSugarLvl] = useState(meal.blood_sugar_lvl);
   const mealId = meal.id;
 
   const updateMeal = () => {
@@ -21,6 +22,7 @@ function editmealTable({ meal }) {
         mealName,
         mealType,
         totalMealCarbs,
+        bloodSugarLvl,
       },
     });
   };
@@ -65,6 +67,19 @@ function editmealTable({ meal }) {
             value={totalMealCarbs}
             onChange={(e) => {
               setTotalMealCarbs(Number(e.target.value));
+            }}
+          />
+        </td>
+        <td>
+          <input
+            id="bloodSugarLvl"
+            type="number"
+            min="0"
+            name="bloodSugarLvl"
+            placeholder=" enter blood sugar lvl"
+            value={bloodSugarLvl}
+            onChange={(e) => {
+              setBloodSugarLvl(Number(e.target.value));
             }}
           />
         </td>
