@@ -1,13 +1,10 @@
 import "./Styles/MealPlan.css";
 import "./MealPlanDetail";
-
+import moment from "moment";
 import Calender from "./Calander";
 import MealRow from "./ToggleEditMeal/MealRow";
 import MealForm from "./MealForm";
 import CarbCalculate from "./Calculate/CarbCalculate";
-// import MealPlanDetail from "./MealPlanDetail";
-import moment from "moment";
-import { FaArrowAltCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,9 +18,7 @@ function MealPlan() {
   );
 
   const orderDates = useSelector((store) => store.date);
-  // const result = dateArray.filter((date) => date.length > 6);
 
-  // console.log("new ordered dates", result);
   console.log("Array of dates", dateArray);
 
   console.log("the meals are", meals);
@@ -42,7 +37,8 @@ function MealPlan() {
 
 
     console.log("In use Effect");
-    const currendate = new Date(); 
+    const currendate = new Date();
+    currendate.setDate(9);
     console.log('in meal page useEffect', moment(currendate).format("MM-DD-YYYY"));
 
     const startDate = moment(currendate).format("MM-DD-YYYY")
@@ -68,7 +64,7 @@ function MealPlan() {
         <h2>Weekly Meal Plan</h2>
 
         <div className="navBar2">
-          <FaArrowAltCircleLeft />
+        
           <label htmlFor="date"> Week of:</label>
           <div className="date">
             <Calender />
@@ -77,7 +73,7 @@ function MealPlan() {
           <label>
             Max Carb Intake: <CarbCalculate />{" "}
           </label>
-          <FaArrowCircleRight />
+          
         </div>
 
         {/* //////////////////MEAL TABLE/////////////////////////// */}

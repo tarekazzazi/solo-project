@@ -30,6 +30,10 @@ function* deletemeal(action) {
     yield axios.delete(`/api/meals/${action.payload.mealId}`);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
       
     });
   } catch (err) {
@@ -60,6 +64,10 @@ function* updatemeal(action) {
     yield axios.put(`/api/meals/${action.payload.mealId}`, action.payload);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
     });
   } catch (err) {
     console.log("error in update meal", err);
