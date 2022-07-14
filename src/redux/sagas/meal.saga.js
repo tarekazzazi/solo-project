@@ -1,9 +1,14 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-function* getMeals() {
+function* getMeals(action) {
   try {
-    const meals = yield axios.get("/api/meals");
+    const meals = yield axios({
+      method: "get",
+      url: `/api/meals/${action.payload.startDate},${action.payload.endDate}`,
+    });
+
+    console.log("get order dates action.payload ", action.payload);
 
     console.log("the response is", meals.data);
 
@@ -25,6 +30,10 @@ function* deletemeal(action) {
     yield axios.delete(`/api/meals/${action.payload.mealId}`);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
     });
   } catch (err) {
     console.log("error in delete saga", err);
@@ -37,6 +46,10 @@ function* addmeals(action) {
     yield axios.post("/api/meals", action.payload);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
     });
   } catch (err) {
     console.log("error in add meals", err);
@@ -48,8 +61,13 @@ function* updatemeal(action) {
     console.log("action is", action.payload);
 
     yield axios.put(`/api/meals/${action.payload.mealId}`, action.payload);
+    console.log("In meal SAGA", action.payload);
     yield put({
       type: "FETCH_MEAL",
+      payload: {
+        startDate: action.payload.startDate,
+        endDate: action.payload.endDate,
+      },
     });
   } catch (err) {
     console.log("error in update meal", err);
