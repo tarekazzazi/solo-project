@@ -9,7 +9,6 @@ function editmealTable({ meal, toggleEdit }) {
   const dispatch = useDispatch();
   const dates = useSelector((store) => store.date);
   console.log("dates fromredux store are", dates);
-
   console.log("meal is", meal);
 
   const [mealName, setMealName] = useState(meal.meal_name);
