@@ -71,7 +71,6 @@ function MealPlan() {
   }, []);
 
   return (
-    // Object.keys(orderDates).length > 0 &&
     <div className="container">
       <h2>Weekly Meal Plan</h2>
 

@@ -24,8 +24,6 @@ function ReadOnlyRow({ meal, toggleEdit }) {
         mealId: id,
         startDate: dates.startDate,
         endDate: dates.endDate,
-        // dates have to go here // grab from date reducer like so ... useSelector((store => date.startDate) date.endDate
-        // must be a part of every payload
       },
     });
   };

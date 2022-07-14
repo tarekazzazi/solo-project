@@ -24,8 +24,9 @@ function CalculateWeeklyTotalCarbs() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Woah slow down there partner your over the carb limit",
+      text: "your over the weekly carb limit",
     });
+  } else {
   }
   console.log("the sum is", sum);
   return (
