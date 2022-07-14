@@ -70,13 +70,13 @@ console.log(bloodsugar);
 
       <Line 
         data={{
-          labels: ['Mon','Tues','Wed','Thurs','Fri', 'Sat', 'Sun'],
+          labels: ['MON' ,'Lunch', 'Dinner','TUES','Lunch', 'Dinner', 'WED', 'Lunch', 'Dinner', 'THURS','Lunch', 'Dinner', 'FRI' ,'Lunch', 'Dinner', 'SAT','Lunch', 'Dinner', 'SUN','Lunch', 'Dinner',],
           datasets: [{
             label: 'blood sugar lvl',
             data: blood,
             fill: false,
             borderColor: 'red',
-            lineTension: 0.2,
+            lineTension: 0.1,
           }]
         }}
 
@@ -106,8 +106,6 @@ console.log(bloodsugar);
 
 
     </div>
-
-
       {/* <LogOutButton className="btn" /> */}
     </div>
   );

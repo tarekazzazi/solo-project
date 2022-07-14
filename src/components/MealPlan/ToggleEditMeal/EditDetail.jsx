@@ -1,20 +1,25 @@
 import EditSingleRow from "./MealRow";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import Button from "@mui/material/Button";
 
-function editmealTable({ meal }) {
+function editmealTable({ meal, toggleEdit }) {
   // Passing in meal Obj prop
   // set meal obj data to default value on Inputs
   const dispatch = useDispatch();
+  const dates = useSelector((store) => store.date);
+  console.log("dates fromredux store are", dates);
+
   console.log("meal is", meal);
 
   const [mealName, setMealName] = useState(meal.meal_name);
   const [mealType, setMealType] = useState(meal.meal_type);
   const [totalMealCarbs, setTotalMealCarbs] = useState(meal.carbs);
-  const [bloodSugarLvl, setBloodSugarLvl] = useState(meal.blood_sugar_lvl);
+  const [bloodSugarLvl, setBloodSugarLvl] = useState(0);
   const mealId = meal.id;
 
   const updateMeal = () => {
+    toggleEdit();
     dispatch({
       type: "UPDATE_MEAL",
       payload: {
@@ -23,6 +28,8 @@ function editmealTable({ meal }) {
         mealType,
         totalMealCarbs,
         bloodSugarLvl,
+        startDate: dates.startDate,
+        endDate: dates.endDate,
       },
     });
   };
@@ -84,7 +91,7 @@ function editmealTable({ meal }) {
           />
         </td>
         <td>
-          <button onClick={updateMeal}>Save</button>
+          <Button onClick={updateMeal}>Save</Button>
         </td>
       </tr>
     </>
