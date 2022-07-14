@@ -9,6 +9,7 @@ function MealForm() {
   const [carbs, setTotalCarbs] = useState(0);
   const [meal_name, setMealName] = useState("");
 
+
   console.log("the current date is", currenDate);
   const dispatch = useDispatch();
   const startDate = useSelector((store) => store.date.startDate);

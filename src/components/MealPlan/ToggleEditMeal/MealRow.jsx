@@ -16,7 +16,7 @@ function singleMealRow({ meal }) {
     <>
       <Fragment>
         {editMeal === false ? (
-          <EditDetail meal={meal} />
+          <EditDetail meal={meal} toggleEdit={toggleEdit} />
         ) : (
           <ReadOnlyRow meal={meal} toggleEdit={toggleEdit} />
         )}
