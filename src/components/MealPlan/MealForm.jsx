@@ -148,7 +148,11 @@ function MealForm() {
             />
           </FormControl>
 
-          <Button variant="contained" sx={{ marginTop: 2, marginLeft: 2 }}>
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            sx={{ marginTop: 2 }}
+          >
             Submit
           </Button>
         </form>

@@ -97,7 +97,6 @@ function MealPlan() {
                 <th>Carbs</th>
                 <th>Blood sugar level</th>
                 <th></th>
-                <th></th>
               </tr>
             </thead>
 

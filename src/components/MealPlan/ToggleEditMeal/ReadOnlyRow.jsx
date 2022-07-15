@@ -36,7 +36,7 @@ function ReadOnlyRow({ meal, toggleEdit }) {
       <TableCell className="tableCell">{meal.meal_type}</TableCell>
       <TableCell className="tableCell">{meal.carbs}</TableCell>
       <TableCell className="tableCell">{meal.blood_sugar_lvl}</TableCell>
-      <TableCell className="tableCell">{meal.notes}</TableCell>
+
       <td>
         <Stack direction="row" spacing={2}>
           <Button onClick={editMeal}>Edit</Button>

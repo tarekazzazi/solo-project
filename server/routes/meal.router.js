@@ -14,7 +14,7 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
 
   const query = `SELECT * FROM meals
   WHERE date BETWEEN $1 AND $2
-  ORDER BY date ASC`;
+  ORDER BY date ASC, meal_type DESC`;
 
   console.log("routerGet STARTDATE", orderDate);
   const sqlParams = [orderDate[0], orderDate[1]];

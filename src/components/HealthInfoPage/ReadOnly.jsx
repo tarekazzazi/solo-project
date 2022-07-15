@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Button from "@mui/material/Button";
 function EditInfoPage({ toggleEdit }) {
   const user = useSelector((store) => store.user);
 
@@ -21,7 +22,10 @@ function EditInfoPage({ toggleEdit }) {
       </ul>
 
       <div>
-        <button onClick={EditHealthInfo}> Edit </button>
+        <Button variant="contained" onClick={EditHealthInfo}>
+          {" "}
+          Edit{" "}
+        </Button>
       </div>
     </div>
   );

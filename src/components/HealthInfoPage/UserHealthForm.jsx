@@ -2,7 +2,7 @@ import React from "react";
 import "./Styles/HealthInfoPage.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-
+import Button from "@mui/material/Button";
 function HealthInfoPage() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -84,7 +84,10 @@ function HealthInfoPage() {
       </ul>
 
       <div>
-        <button onClick={updateHealthInfo}> Save </button>
+        <Button variant="contained" onClick={updateHealthInfo}>
+          {" "}
+          Save{" "}
+        </Button>
       </div>
     </div>
   );
