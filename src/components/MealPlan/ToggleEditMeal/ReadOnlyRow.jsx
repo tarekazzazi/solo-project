@@ -30,14 +30,14 @@ function ReadOnlyRow({ meal, toggleEdit }) {
 
   return (
     <TableRow key={meal.id}>
-      <td>{moment(meal.date).format("MM-DD-YYYY")}</td>
+      <TableCell>{moment(meal.date).format("MM-DD-YYYY")}</TableCell>
 
       <TableCell className="tableCell">{meal.meal_name}</TableCell>
       <TableCell className="tableCell">{meal.meal_type}</TableCell>
       <TableCell className="tableCell">{meal.carbs}</TableCell>
       <TableCell className="tableCell">{meal.blood_sugar_lvl}</TableCell>
 
-      <td>
+      <TableCell>
         <Stack direction="row" spacing={2}>
           <Button onClick={editMeal}>Edit</Button>
 
@@ -49,7 +49,7 @@ function ReadOnlyRow({ meal, toggleEdit }) {
             DELETE
           </Button>
         </Stack>
-      </td>
+      </TableCell>
     </TableRow>
   );
 }

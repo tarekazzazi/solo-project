@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Line } from "react-chartjs-2";
 import { useEffect } from "react";
 import moment from "moment";
-
+import "./UserPage.css";
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.name}!</h2>
-      <div>
+      <div className="Chart">
         <Line
           data={{
             labels: [

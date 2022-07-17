@@ -31,7 +31,7 @@ function CalculateWeeklyTotalCarbs() {
   console.log("the sum is", sum);
   return (
     <>
-      <h4 id="liveTotal">weekly Carbs: {sum}</h4>
+      <h4 id="liveTotal">weekly carb limit: {sum}</h4>
     </>
   );
 }

@@ -6,6 +6,11 @@ import MealRow from "./ToggleEditMeal/MealRow";
 import MealForm from "./MealForm";
 import CarbCalculate from "./Calculate/CarbCalculate";
 import TableHead from "@mui/material/TableHead";
+import Table from "@mui/material/Table";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableBody from "@mui/material/TableBody";
+
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -38,7 +43,7 @@ function MealPlan() {
     console.log("In use Effect");
 
     const currendate = new Date();
-    currendate.setDate(9);
+    currendate.setDate(17);
 
     console.log(
       "in meal page useEffect",
@@ -81,33 +86,49 @@ function MealPlan() {
         </div>
 
         <label>
-          Max Carb Intake: <CarbCalculate />{" "}
+          <CarbCalculate />{" "}
         </label>
       </div>
 
       {/* //////////////////MEAL TABLE/////////////////////////// */}
       <div className="mealTableContainer">
         <form>
-          <table>
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Meal</th>
-                <th>Type</th>
-                <th>Carbs</th>
-                <th>Blood sugar level</th>
-                <th></th>
-              </tr>
-            </thead>
+          <Table
+            class="mui--align-middle"
+            sx={{
+              width: "50%",
+              align: "middle",
+              outerHeight: "50",
+            }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontWeight: 700 }}>Day</TableCell>
+                <TableCell sx={{ fontWeight: 700 }}>Meal</TableCell>
+                <TableCell sx={{ fontWeight: 700 }}>Type</TableCell>
+                <TableCell sx={{ fontWeight: 700 }}>Carbs</TableCell>
+                <TableCell
+                  sx={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    fontWeight: 700,
+                  }}
+                >
+                  Blood sugar level
+                </TableCell>
 
-            <tbody className="mealBody">
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody className="mealBody">
               {meals &&
                 meals.map((meal) => {
                   return <MealRow key={meal.id} meal={meal} />;
                 })}
               {/* <MealPlanDetail /> */}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </form>
       </div>
       {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
