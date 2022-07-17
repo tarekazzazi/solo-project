@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Button from "@mui/material/Button";
+import "./Styles/HealthInfoPage.css";
 function EditInfoPage({ toggleEdit }) {
   const user = useSelector((store) => store.user);
 
@@ -16,12 +18,15 @@ function EditInfoPage({ toggleEdit }) {
         <li> You currently weigh: {user.wieght} lbs </li>
 
         <li>Carb Limit: {user.max_carbs}</li>
-
-        <li>{user.doctor_notes}</li>
+        {/* 
+        <li>{user.doctor_notes}</li> */}
       </ul>
 
       <div>
-        <button onClick={EditHealthInfo}> Edit </button>
+        <Button variant="contained" onClick={EditHealthInfo}>
+          {" "}
+          Edit{" "}
+        </Button>
       </div>
     </div>
   );

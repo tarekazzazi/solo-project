@@ -7,3 +7,6 @@ textarea {
   width: 100%;
   resize: none;
 }
+ul {
+  list-style: none;
+}
