@@ -80,7 +80,7 @@ function MealPlan() {
       <h2>Weekly Meal Plan</h2>
 
       <div className="navBar2">
-        <label htmlFor="date"> Week of:</label>
+        <label htmlFor="date"> Week of: </label>
         <div className="date">
           <Calender />
         </div>
