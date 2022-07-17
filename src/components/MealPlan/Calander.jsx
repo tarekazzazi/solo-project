@@ -3,12 +3,11 @@ import { WeeklyCalendar } from "react-week-picker";
 import "react-week-picker/src/lib/calendar.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-
+import "./Styles/MealPlan.css";
 function Calender() {
   const dispatch = useDispatch();
   useEffect(() => {
     handleWeekPick();
-    
   }, []);
 
   const handleWeekPick = (startDate, endDate) => {

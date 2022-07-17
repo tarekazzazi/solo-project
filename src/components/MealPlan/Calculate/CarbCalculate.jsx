@@ -24,13 +24,14 @@ function CalculateWeeklyTotalCarbs() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Woah slow down there partner your over the carb limit",
+      text: "your over the weekly carb limit",
     });
+  } else {
   }
   console.log("the sum is", sum);
   return (
     <>
-      <h4 id="liveTotal">weekly Carbs: {sum}</h4>
+      <h4 id="liveTotal">weekly carb limit: {sum}</h4>
     </>
   );
 }

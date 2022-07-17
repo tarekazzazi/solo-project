@@ -1,7 +1,27 @@
 Table,
 th,
 td.tableCell {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+
   border-collapse: collapse;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.container {
+  text-align: center;
+}
+
+.flex {
+  margin-left: auto;
+  margin-right: auto;
+}
+.box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+}
