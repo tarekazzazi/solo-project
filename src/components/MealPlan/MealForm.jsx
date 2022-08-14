@@ -100,7 +100,7 @@ function MealForm() {
       >
         <>
           <div>
-            <h5>Add a new meal...</h5>
+            <h3>Add a new meal...</h3>
             <Stack
               direction="column"
               justifyContent="center"
@@ -109,12 +109,12 @@ function MealForm() {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                marginTop: "2em",
+                marginTop: "1em",
               }}
             >
               <form onSubmit={handleSubmit}>
                 <Card
-                  elevation={4}
+                  elevation={3}
                   sx={{
                     padding: "2em",
                     margin: "2em",
