@@ -20,7 +20,6 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
-
         name: name,
         weight: weight,
         carbLimit: carbLimit,
