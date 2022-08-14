@@ -13,7 +13,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import AboutPage from "../AboutPage/AboutPage";
 import UserPage from "../UserPage/UserPage";
 import MealPlan from "../MealPlan/MealPlan";
-import LandingPage from "../LandingPage/LandingPage";
+
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import SingleRow from "../HealthInfoPage/SingleRow";
@@ -34,7 +34,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/login" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -97,7 +97,7 @@ function App() {
               <RegisterPage />
             )}
           </Route>
-
+          {/* 
           <Route exact path="/home">
             {user.id ? (
               // If the user is already logged in,
@@ -105,9 +105,9 @@ function App() {
               <Redirect to="/user" />
             ) : (
               // Otherwise, show the Landing page
-              <LandingPage />
+              <RegisterPage />
             )}
-          </Route>
+          </Route> */}
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

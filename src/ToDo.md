@@ -2,7 +2,7 @@
 
 2. Make Nav a Drawer
 
-3. Add a MUI Card for meal form on meal planner
+<!-- 3. Add a MUI Card for meal form on meal planner -->
 
 4. Add a user drop down like Venboo Project
 
