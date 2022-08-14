@@ -8,6 +8,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
+    // ////////////////////////////////////////////////////---------------
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">Diabetes Tracker</h2>
@@ -30,11 +31,11 @@ function Nav() {
 
             {/* //////////TAREK ADDED CODE HERE////////////// */}
             <Link className="navLink" to="/healthInfo">
-              HealthInfo Page
+              My Profile
             </Link>
 
             <Link className="navLink" to="/mealplan">
-              Meal Page
+              My Meal Plan
             </Link>
             {/* ///////////////////////////////////////////// */}
             <LogOutButton className="navLink" />

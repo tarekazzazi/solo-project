@@ -34,7 +34,7 @@ function UserPage() {
   useEffect(() => {
     console.log("In use Effect");
     const currendate = new Date();
-    currendate.setDate(9);
+    currendate.setDate(17);
 
     console.log(
       "in meal page useEffect",
@@ -101,8 +101,8 @@ function UserPage() {
               {
                 label: "Average blood suagr lvl",
                 data: [
-                  140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140,
-                  140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140,
+                  130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130,
+                  130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130,
                 ],
                 fill: true,
                 borderColor: "grey",

@@ -32,8 +32,9 @@ function MealPlan() {
   function addDays(date, days) {
     // Calculates new date here
     let result = new Date(date);
+
     result.setDate(result.getDate() + days);
-    // console.log(result);
+
     const mealdate = result;
 
     return mealdate;
@@ -42,15 +43,10 @@ function MealPlan() {
   useEffect(() => {
     console.log("In use Effect");
 
-    const currendate = new Date();
-    currendate.setDate(17);
+    const startOfWeek = moment().startOf("week").toDate();
+    console.log("START", startOfWeek);
 
-    console.log(
-      "in meal page useEffect",
-      moment(currendate).format("MM-DD-YYYY")
-    );
-
-    const startDate = moment(currendate).format("MM-DD-YYYY");
+    const startDate = moment(startOfWeek).format("MM-DD-YYYY");
 
     const endDate = moment(addDays(new Date(startDate), 7)).format(
       "MM-DD-YYYY"
@@ -94,9 +90,8 @@ function MealPlan() {
       <div className="mealTableContainer">
         <form>
           <Table
-            class="mui--align-middle"
             sx={{
-              width: "50%",
+              width: "60%",
               align: "middle",
               outerHeight: "50",
             }}
@@ -133,7 +128,6 @@ function MealPlan() {
       </div>
       {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
 
-      {/* ////////////////Add A New Meal Form////////////////////////////////// */}
       <MealForm />
     </div>
   );

@@ -12,7 +12,7 @@ import "./Styles/Form.css";
 function MealForm() {
   const [selecteDate, setSelectedDate] = useState("");
   const [day, setDayOfWeek] = useState("");
-  const [type, setMealType] = useState("Breakfest");
+  const [type, setMealType] = useState("Breakfast");
   const [carbs, setTotalCarbs] = useState(0);
   const [meal_name, setMealName] = useState("");
 
@@ -106,7 +106,7 @@ function MealForm() {
                 setMealType(e.target.value);
               }}
             >
-              <MenuItem value="Breakfest">Breakfest</MenuItem>
+              <MenuItem value="Breakfast">Breakfast</MenuItem>
               <MenuItem value="Lunch">Lunch</MenuItem>
               <MenuItem value="Dinner">Dinner</MenuItem>
             </Select>
@@ -153,7 +153,7 @@ function MealForm() {
             variant="contained"
             sx={{ marginTop: 2 }}
           >
-            Submit
+            Add
           </Button>
         </form>
       </div>

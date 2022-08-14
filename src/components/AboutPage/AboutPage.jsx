@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,7 +9,14 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <ul>
+          <h5> Tech used to create this project</h5>
+          <li>React</li>
+          <li>Redux</li>
+          <li>SQL</li>
+          <li>MUI</li>
+          <li>Chart js</li>
+        </ul>
       </div>
     </div>
   );

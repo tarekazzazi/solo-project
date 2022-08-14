@@ -5,9 +5,12 @@ import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useSelector, useDispatch } from "react-redux";
+
 function ReadOnlyRow({ meal, toggleEdit }) {
   const dispatch = useDispatch();
+
   const dates = useSelector((store) => store.date);
+
   console.log("dates fromredux store are", dates);
   // on edit button click run function toggleEdit
   const editMeal = () => {
