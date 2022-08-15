@@ -10,8 +10,6 @@ import "./UserPage.css";
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const dispatch = useDispatch();
-  // const user = useSelector((store) => store.user);
-  // const bloodsugar = useSelector((store) => store.meal.blood_sugar_lvl);
   const theme = createTheme({
     palette: {
       primary: {
@@ -30,15 +28,18 @@ function UserPage() {
     return mealdate;
   }
   const user = useSelector((store) => store.user);
-  const bloodsugar = useSelector((store) => store.meal.blood_sugar_lvl);
 
   const blood = useSelector((store) =>
-    store.meal.map((meal) => {
-      return meal.blood_sugar_lvl;
+    store.meal.filter((meal) => {
+      if (meal.user_id === user.id) {
+        return meal.blood_sugar_lvl;
+      }
     })
   );
 
-  console.log("blood is ", blood);
+  let UserBloodSugarLevel = blood.map((userBloodSugar) => {
+    return userBloodSugar.blood_sugar_lvl;
+  });
 
   useEffect(() => {
     console.log("In use Effect");
@@ -65,11 +66,7 @@ function UserPage() {
       },
     });
   }, []);
-  console.log(bloodsugar);
-  // bloodsugar ?
-  // console.log('blood sugar is', bloodsugar )
-  // :
-  // console.log('Not defined');
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -127,7 +124,7 @@ function UserPage() {
                     datasets: [
                       {
                         label: "My blood sugar lvl",
-                        data: blood,
+                        data: UserBloodSugarLevel,
                         fill: false,
                         borderColor: "red",
                         lineTension: 0.1,
@@ -160,6 +157,13 @@ function UserPage() {
                           ticks: {
                             min: 50,
                             max: 300,
+                          },
+                        },
+                      ],
+                      xAxes: [
+                        {
+                          ticks: {
+                            beginAtZero: true,
                           },
                         },
                       ],
