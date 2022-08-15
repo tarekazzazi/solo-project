@@ -1,18 +1,3 @@
-// import React from "react";
-// import Box from "@mui/material/Box";
-// import Drawer from "@mui/material/Drawer";
-// import Button from "@mui/material/Button";
-// import List from "@mui/material/List";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
-// import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from "@mui/icons-material/Mail";
-// import MenuIcon from "@mui/icons-material/Menu";
-
-// ??????//
-
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,11 +9,9 @@ import "./Nav.css";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -38,22 +21,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import PersonIcon from "@mui/icons-material/Person";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import StyleIcon from "@mui/icons-material/Style";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import StorefrontIcon from "@mui/icons-material/Storefront";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
-import BusinessIcon from "@mui/icons-material/Business";
-import EditIcon from "@mui/icons-material/Edit";
 import Avatar from "@mui/material/Avatar";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
-
+import InfoIcon from "@mui/icons-material/Info";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -132,40 +108,30 @@ export default function NavDrawer() {
   //where to render, and which icon to render with it.
   const links = [
     {
-      text: "Home",
-      link: "/login",
-      upperLowerNav: "upper",
-      icon: <CalendarMonthIcon />,
-    },
-    {
       text: "My Profile",
       link: "/healthInfo",
       upperLowerNav: "upper",
-      icon: <DashboardIcon />,
+      icon: <AccountCircleIcon />, // use this one for my meal plan
+    },
+
+    {
+      text: "My Meal Plan",
+      link: "/mealplan",
+      upperLowerNav: "upper",
+      icon: <FastfoodIcon />,
     },
     {
-      text: "Add Event",
-      link: "/addEventForm",
+      text: "Blood Sugar Chart",
+      link: "/login",
       upperLowerNav: "upper",
-      icon: <AddCircleIcon />,
+      icon: <ShowChartIcon />,
     },
+
     {
-      text: "All Events",
-      link: "/admin/events",
+      text: "About",
+      link: "/about",
       upperLowerNav: "upper",
-      icon: <CalendarMonthIcon />,
-    },
-    {
-      text: "All Vendors",
-      link: "/allvendors",
-      upperLowerNav: "upper",
-      icon: <ShoppingBagIcon />,
-    },
-    {
-      text: "All Venues",
-      link: "/allVenues",
-      upperLowerNav: "upper",
-      icon: <StorefrontIcon />,
+      icon: <InfoIcon />, // use this one for my meal plan
     },
   ];
 
@@ -238,7 +204,6 @@ export default function NavDrawer() {
                 return item;
               })
               .map((item, index) => (
-                // item.userType.indexof('host') >= 0 ?
                 <ListItem
                   key={index}
                   disablePadding
@@ -252,6 +217,43 @@ export default function NavDrawer() {
                   </ListItemButton>
                 </ListItem>
               ))}
+        </List>
+        <Divider />
+        <List>
+          {!user.name ? (
+            <ListItem
+              key="login"
+              disablePadding
+              onClick={() => {
+                history.push("/login");
+                setOpen(false);
+              }}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <LoginIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItemButton>
+            </ListItem>
+          ) : (
+            <ListItem
+              key="logout"
+              disablePadding
+              onClick={() => {
+                dispatch({ type: "LOGOUT" });
+                history.push("/");
+                setOpen(false);
+              }}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItemButton>
+            </ListItem>
+          )}
         </List>
       </Drawer>
       <Main open={open}>
