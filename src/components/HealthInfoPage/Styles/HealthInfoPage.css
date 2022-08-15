@@ -10,3 +10,7 @@ textarea {
 ul {
   list-style: none;
 }
+
+.profileInfo {
+  text-align: left;
+}

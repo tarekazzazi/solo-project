@@ -7,7 +7,11 @@ function CalculateWeeklyTotalCarbs() {
   const totalCarbs = useSelector((store) => store.user);
   const mealCarbs = useSelector((store) =>
     store.meal.map((meal) => {
-      return meal.carbs;
+      if (totalCarbs.id === meal.user_id) {
+        return meal.carbs;
+      } else {
+        return 0;
+      }
     })
   );
 

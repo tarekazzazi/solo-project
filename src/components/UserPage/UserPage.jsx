@@ -1,6 +1,8 @@
 import React from "react";
 // import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
+import { Stack, Grid, Card } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Line } from "react-chartjs-2";
 import { useEffect } from "react";
 import moment from "moment";
@@ -10,6 +12,13 @@ function UserPage() {
   const dispatch = useDispatch();
   // const user = useSelector((store) => store.user);
   // const bloodsugar = useSelector((store) => store.meal.blood_sugar_lvl);
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#b2102f",
+      },
+    },
+  });
 
   function addDays(date, days) {
     // Calculates new date here
@@ -34,7 +43,7 @@ function UserPage() {
   useEffect(() => {
     console.log("In use Effect");
     const currendate = new Date();
-    currendate.setDate(9);
+    currendate.setDate(17);
 
     console.log(
       "in meal page useEffect",
@@ -62,78 +71,108 @@ function UserPage() {
   // :
   // console.log('Not defined');
   return (
-    <div className="container">
-      <h2>Welcome, {user.name}!</h2>
-      <div className="Chart">
-        <Line
-          data={{
-            labels: [
-              "MON",
-              "",
-              "",
-              "TUES",
-              "",
-              "",
-              "WED",
-              "",
-              "",
-              "THURS",
-              "",
-              "",
-              "FRI",
-              "",
-              "",
-              "SAT",
-              "",
-              "",
-              "SUN",
-              "",
-              "",
-            ],
-            datasets: [
-              {
-                label: "My blood sugar lvl",
-                data: blood,
-                fill: false,
-                borderColor: "red",
-                lineTension: 0.1,
-              },
-              {
-                label: "Average blood suagr lvl",
-                data: [
-                  140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140,
-                  140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140,
-                ],
-                fill: true,
-                borderColor: "grey",
-                lineTension: 0.1,
-              },
-            ],
+    <ThemeProvider theme={theme}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            marginTop: "2em",
           }}
-          height={400}
-          width={600}
-          options={{
-            responsive: false,
-            maintainAspectRatio: false,
-            title: {
-              display: true,
-              text: "Weekly Blood Sugar Tracking",
-            },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    min: 50,
-                    max: 300,
-                  },
-                },
-              ],
-            },
-          }}
-        />
-      </div>
-      {/* <LogOutButton className="btn" /> */}
-    </div>
+        >
+          <div className="container">
+            <Card
+              elevation={4}
+              sx={{
+                padding: "2em",
+                margin: "2em",
+              }}
+            >
+              <h2>Welcome, {user.name}!</h2>
+              <div className="Chart">
+                <Line
+                  data={{
+                    labels: [
+                      "MON",
+                      "",
+                      "",
+                      "TUES",
+                      "",
+                      "",
+                      "WED",
+                      "",
+                      "",
+                      "THURS",
+                      "",
+                      "",
+                      "FRI",
+                      "",
+                      "",
+                      "SAT",
+                      "",
+                      "",
+                      "SUN",
+                      "",
+                      "",
+                    ],
+                    datasets: [
+                      {
+                        label: "My blood sugar lvl",
+                        data: blood,
+                        fill: false,
+                        borderColor: "red",
+                        lineTension: 0.1,
+                      },
+                      {
+                        label: "Average blood suagr lvl",
+                        data: [
+                          130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130,
+                          130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130,
+                          130, 130,
+                        ],
+                        fill: true,
+                        borderColor: "grey",
+                        lineTension: 0.1,
+                      },
+                    ],
+                  }}
+                  height={400}
+                  width={600}
+                  options={{
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    title: {
+                      display: true,
+                      text: "Weekly Blood Sugar Tracking",
+                    },
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            min: 50,
+                            max: 300,
+                          },
+                        },
+                      ],
+                    },
+                  }}
+                />
+              </div>
+            </Card>
+            {/* <LogOutButton className="btn" /> */}
+          </div>
+        </Stack>
+      </Grid>
+    </ThemeProvider>
   );
 }
 
