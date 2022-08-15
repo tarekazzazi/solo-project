@@ -18,6 +18,8 @@ import { useSelector, useDispatch } from "react-redux";
 function MealPlan() {
   const dispatch = useDispatch();
   const meals = useSelector((store) => store.meal);
+  const user = useSelector((store) => store.user);
+
   const dateArray = useSelector((store) =>
     store.meal.map((meal) => {
       return moment(meal.date).format("MM-DD-YYYY");
@@ -151,7 +153,9 @@ function MealPlan() {
                     <TableBody className="mealBody">
                       {meals &&
                         meals.map((meal) => {
-                          return <MealRow key={meal.id} meal={meal} />;
+                          if (user.id === meal.user_id) {
+                            return <MealRow key={meal.id} meal={meal} />;
+                          }
                         })}
                       {/* <MealPlanDetail /> */}
                     </TableBody>

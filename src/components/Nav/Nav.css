@@ -40,3 +40,7 @@
 .navLink:hover {
   background-color: #a40a0ac5;
 }
+
+.title {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
