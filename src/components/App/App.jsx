@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "../Nav/Nav";
+import Nav from "../Nav/NavDrawer";
 import Footer from "../Footer/Footer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import AboutPage from "../AboutPage/AboutPage";
@@ -57,7 +57,6 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          {/* Tarek Added Componets here */}
           <ProtectedRoute
             // logged in shows MealPlan page
             exact
@@ -73,8 +72,6 @@ function App() {
           >
             <SingleRow />
           </ProtectedRoute>
-
-          {/* /////////////////////END OF ADDED ROUTES/////////////////////// */}
 
           <Route exact path="/login">
             {user.id ? (
@@ -98,17 +95,7 @@ function App() {
             )}
           </Route>
           {/* 
-          <Route exact path="/home">
-            {user.id ? (
-              // If the user is already logged in,
-              // redirect them to the /user page
-              <Redirect to="/user" />
-            ) : (
-              // Otherwise, show the Landing page
-              <RegisterPage />
-            )}
-          </Route> */}
-
+    
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

@@ -1,6 +1,16 @@
+# DB Tracker
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+DB Tracker is a app that helps people with diabeties manage all there information and eat better
+by allowing them to create a weekly meal plan to track the amount of calories they consume per 
+meal and take their blood sugar level with each meal.
+
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine.
+
+- Fork repository and git clone it onto your computer
+- Create database and open in visual studio code
 
 ## Create database and table
 
@@ -29,54 +39,43 @@ CREATE TABLE "meals" (
 );
 ```
 
-
 ## Development Setup Instructions
 
-- Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
   ```
   SERVER_SESSION_SECRET=superDuperSecret
   ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
+  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://www.allkeysgenerator.com/](https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx#)
+- Run `npm install`
+- Run `npm start`
 - Run `npm run client`
 - Navigate to `localhost:3000`
+- Create a user by clicking on register
+- Fill out the form and click save button
+- Login
 
-## Production Build
+### Prerequisites
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+What things you need to install the software and how to install them
 
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
+```
+Postgres SQL version 14.5 (https://www.postgresql.org/)
+Postico version 1.5.20 (https://eggerapps.at/postico/)
+```
 
-## Lay of the Land
+## Built With
 
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
+- [React](https://17.reactjs.org/docs/getting-started.html) - The framework used
+- [NPM](https://docs.npmjs.com/getting-started) - Dependency Management
+- [Javascript] object-oriented computer programming language
+- [CSS] Cascadeing Style Sheets
+- [HTML] HyperText Markup Language
+- [SQL] Structured Query Language
 
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
+# Libraries Used
 
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+- [Material_Ui] (https://mui.com/)
+- [Chart.Js2] (https://www.chartjs.org/)
+- [Moment] (https://momentjs.com/)
+- [sweetalert2] (https://sweetalert2.github.io/)
+- [react-week-picker] (https://www.npmjs.com/package/react-week-picker)

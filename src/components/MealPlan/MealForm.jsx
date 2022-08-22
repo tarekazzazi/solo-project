@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import currenDate from "./Calander";
-
+import React from "react";
 import { Stack, Grid, Card } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,25 +11,9 @@ import Button from "@mui/material/Button";
 import "./Styles/Form.css";
 
 function MealForm() {
-  const [selecteDate, setSelectedDate] = useState("");
-  const [day, setDayOfWeek] = useState("");
-  const [type, setMealType] = useState("Breakfast");
-  const [carbs, setTotalCarbs] = useState(0);
-  const [meal_name, setMealName] = useState("");
-
-  console.log("the current date is", currenDate);
-  const dispatch = useDispatch();
-  const startDate = useSelector((store) => store.date.startDate);
-  const dateRange = useSelector((store) => store.date);
-
-  console.log("selectdate is", startDate);
-  const user = useSelector((store) => store.user);
-  // Sets state of Meal Form variables
-
   function handleSubmit(evt) {
     evt.preventDefault();
 
-    // move to dispatch to top
     console.log("In mealform");
     dispatch({
       type: "ADD_MEAL",
@@ -44,10 +27,21 @@ function MealForm() {
         endDate: dateRange.endDate,
       },
     });
-
-    evt.target.reset();
+    location.reload();
     console.log("Select date", selecteDate);
   }
+
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
+  const startDate = useSelector((store) => store.date.startDate);
+  const dateRange = useSelector((store) => store.date);
+
+  // Sets state of Meal Form variables
+  const [selecteDate, setSelectedDate] = useState("");
+  const [day, setDayOfWeek] = useState("");
+  const [type, setMealType] = useState("Breakfast");
+  const [carbs, setTotalCarbs] = useState(0);
+  const [meal_name, setMealName] = useState("");
 
   const theme = createTheme({
     palette: {
@@ -84,10 +78,8 @@ function MealForm() {
     // Calculates new date here
     let result = new Date(date);
     result.setDate(result.getDate() + days);
-    // console.log(result);
-    const mealdate = result;
 
-    return mealdate;
+    return result;
   }
 
   return (

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import "./Styles/MealPlan.css";
 function Calender() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     handleWeekPick();
   }, []);
@@ -26,11 +27,7 @@ function Calender() {
   return (
     <>
       <div data-testid="calendar">
-        <WeeklyCalendar
-          onWeekPick={handleWeekPick}
-          // // jumpToCurrentWeekRequired={true}
-          // onJumpToCurrentWeek={handleJumpToCurrentWeek}
-        />
+        <WeeklyCalendar onWeekPick={handleWeekPick} />
       </div>
     </>
   );

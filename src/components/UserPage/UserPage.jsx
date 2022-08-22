@@ -1,5 +1,4 @@
 import React from "react";
-// import LogOutButton from "../LogOutButton/LogOutButton";
 import { useSelector, useDispatch } from "react-redux";
 import { Stack, Grid, Card } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -7,11 +6,9 @@ import { Line } from "react-chartjs-2";
 import { useEffect } from "react";
 import moment from "moment";
 import "./UserPage.css";
+
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const dispatch = useDispatch();
-  // const user = useSelector((store) => store.user);
-  // const bloodsugar = useSelector((store) => store.meal.blood_sugar_lvl);
   const theme = createTheme({
     palette: {
       primary: {
@@ -21,41 +18,35 @@ function UserPage() {
   });
 
   function addDays(date, days) {
-    // Calculates new date here
+    // Calculates new date here based off of date and days params given
     let result = new Date(date);
     result.setDate(result.getDate() + days);
-    // console.log(result);
-    const mealdate = result;
-
-    return mealdate;
+    return result;
   }
-  const user = useSelector((store) => store.user);
-  const bloodsugar = useSelector((store) => store.meal.blood_sugar_lvl);
 
+  const user = useSelector((store) => store.user);
   const blood = useSelector((store) =>
-    store.meal.map((meal) => {
-      return meal.blood_sugar_lvl;
+    // Filters every meal in the redux store and checks if the user id
+    // Attached to the meal matches the user id of the person logged in
+    store.meal.filter((meal) => {
+      if (meal.user_id === user.id) {
+        return meal.blood_sugar_lvl;
+      }
     })
   );
 
-  console.log("blood is ", blood);
+  let UserBloodSugarLevel = blood.map((userBloodSugar) => {
+    return userBloodSugar.blood_sugar_lvl;
+  });
 
   useEffect(() => {
-    console.log("In use Effect");
-    const currendate = new Date();
-    currendate.setDate(17);
-
-    console.log(
-      "in meal page useEffect",
-      moment(currendate).format("MM-DD-YYYY")
-    );
-
-    const startDate = moment(currendate).format("MM-DD-YYYY");
-
+    //  Uses moment to determine the start of the week
+    //  Adds 7 days to the startdate to determine the end date
+    const startOfWeek = moment().startOf("week").toDate();
+    const startDate = moment(startOfWeek).format("MM-DD-YYYY");
     const endDate = moment(addDays(new Date(startDate), 7)).format(
       "MM-DD-YYYY"
     );
-    console.log(moment(endDate).format("MM-DD-YYYY"));
 
     dispatch({
       type: "FETCH_MEAL",
@@ -65,11 +56,7 @@ function UserPage() {
       },
     });
   }, []);
-  console.log(bloodsugar);
-  // bloodsugar ?
-  // console.log('blood sugar is', bloodsugar )
-  // :
-  // console.log('Not defined');
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -127,7 +114,7 @@ function UserPage() {
                     datasets: [
                       {
                         label: "My blood sugar lvl",
-                        data: blood,
+                        data: UserBloodSugarLevel,
                         fill: false,
                         borderColor: "red",
                         lineTension: 0.1,
@@ -163,12 +150,18 @@ function UserPage() {
                           },
                         },
                       ],
+                      xAxes: [
+                        {
+                          ticks: {
+                            beginAtZero: true,
+                          },
+                        },
+                      ],
                     },
                   }}
                 />
               </div>
             </Card>
-            {/* <LogOutButton className="btn" /> */}
           </div>
         </Stack>
       </Grid>
@@ -176,5 +169,4 @@ function UserPage() {
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;
