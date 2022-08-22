@@ -1,6 +1,6 @@
 # DB Tracker
 
-DB Tracker is a app that helps people with diabeties manage all there information and eat better
+DB Tracker is a app that helps people with diabeties manage all their health information and eat better
 by allowing them to create a weekly meal plan to track the amount of calories they consume per 
 meal and take their blood sugar level with each meal.
 
