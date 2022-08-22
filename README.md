@@ -67,10 +67,10 @@ Postico version 1.5.20 (https://eggerapps.at/postico/)
 
 - [React](https://17.reactjs.org/docs/getting-started.html) - The framework used
 - [NPM](https://docs.npmjs.com/getting-started) - Dependency Management
-- [Javascript] object-oriented computer programming language
-- [CSS] Cascadeing Style Sheets
-- [HTML] HyperText Markup Language
-- [SQL] Structured Query Language
+- Javascript object-oriented computer programming language
+- CSS Cascadeing Style Sheets
+- HTML HyperText Markup Language
+- SQL Structured Query Language
 
 # Libraries Used
 
