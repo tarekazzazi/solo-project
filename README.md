@@ -1,14 +1,46 @@
 # DB Tracker
 
-DB Tracker is a app that helps people with diabeties manage all there information and eat better by allowing them to create a weekly meal plan to track the amount of calories they consume per meal and take their blood sugar level with each meal.
+DB Tracker is a app that helps people with diabeties manage all there information and eat better
+by allowing them to create a weekly meal plan to track the amount of calories they consume per 
+meal and take their blood sugar level with each meal.
+
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
 
 - Fork repository and git clone it onto your computer
-- Make a Database called 'meal_planner' in postico
-- Open in visual studio code
+- Create database and open in visual studio code
+
+## Create database and table
+
+Create a new database called `meal_planner` and create a `user` table:
+
+```SQL
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
+    "name" VARCHAR(255),
+	"wieght" INTEGER,
+	"max_carbs" INTEGER,
+	"doctor_notes" VARCHAR(255)
+);
+
+CREATE TABLE "meals" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INTEGER,
+    "date" DATE,
+    "meal_name" VARCHAR(255),
+    "meal_type" VARCHAR(255),
+    "carbs" INTEGER,
+    "blood_sugar_lvl" INTEGER,
+    "notes" VARCHAR(255)
+);
+```
+
+## Development Setup Instructions
+
 - Create a `.env` file at the root of the project and paste this line into the file:
   ```
   SERVER_SESSION_SECRET=superDuperSecret
