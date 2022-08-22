@@ -7,11 +7,6 @@ function* getMeals(action) {
       method: "get",
       url: `/api/meals/${action.payload.startDate},${action.payload.endDate}`,
     });
-
-    console.log("get order dates action.payload ", action.payload);
-
-    console.log("the response is", meals.data);
-
     yield put({
       type: "SET_MEAL",
       payload: meals.data,
@@ -42,7 +37,6 @@ function* deletemeal(action) {
 
 function* addmeals(action) {
   try {
-    console.log("in meal saga", action.payload);
     yield axios.post("/api/meals", action.payload);
     yield put({
       type: "FETCH_MEAL",
@@ -58,8 +52,6 @@ function* addmeals(action) {
 
 function* updatemeal(action) {
   try {
-    console.log("action is", action.payload);
-
     yield axios.put(`/api/meals/${action.payload.mealId}`, action.payload);
     console.log("In meal SAGA", action.payload);
     yield put({

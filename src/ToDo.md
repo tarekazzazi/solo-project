@@ -6,8 +6,8 @@
 
 <!-- 4. Add a user drop down like Venboo Project -->
 
-5. fill out Read Me
+<!-- 5. fill out Read Me -->
 
 6. Refactor code and remove date reducer not needed
 
-7. Clean Up delete Template components
+<!-- 7. Clean Up delete Template components -->

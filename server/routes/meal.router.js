@@ -5,13 +5,12 @@ const {
 const pool = require("../modules/pool");
 const router = express.Router();
 
-/**
- * GET route template
- */
 router.get("/:id", rejectUnauthenticated, (req, res) => {
-  // GET route code here
   const orderDate = req.params.id.split(",");
 
+  // GET
+  // meals between the startdate and endates provided
+  // from orderDate array
   const query = `SELECT * FROM meals
   WHERE date BETWEEN $1 AND $2
   ORDER BY date ASC, meal_type ASC`;
@@ -30,11 +29,7 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-/**
- * POST route template
- */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
   const sqlQuery = ` 
   INSERT INTO meals (user_id, meal_name, meal_type, carbs, notes, date)
   VALUES ($1, $2, $3, $4, $5, $6)
@@ -49,7 +44,6 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     req.body.notes,
     req.body.selecteDate,
   ];
-  console.log("did the date make it over", req.body.mealdate);
 
   pool
     .query(sqlQuery, sqlParams)
@@ -65,7 +59,6 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 // Delete Route
 
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
-  console.log("body is", req.user.id);
   sqlQuery = `
   DELETE FROM "meals" 
   WHERE id = $1
@@ -76,9 +69,6 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
   req.params.id = Number(req.params.id);
 
   sqlParams = [req.params.id, req.user.id];
-
-  console.log("sql params are", req.params.id);
-  console.log("SQL Qurey is", req.user.id);
   pool
     .query(sqlQuery, sqlParams)
     .then((result) => {
@@ -90,9 +80,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-// Put Route
 router.put("/:id", rejectUnauthenticated, (req, res) => {
-  // endpoint functionality
   const sqlQuery = ` UPDATE meals
   SET meal_name= $2 , meal_type= $3 , carbs= $4 , blood_sugar_lvl= $5
   WHERE id = $1
@@ -105,7 +93,7 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     req.body.totalMealCarbs,
     req.body.bloodSugarLvl,
   ];
-  console.log("req.body is", sqlParams);
+
   pool
     .query(sqlQuery, sqlParams)
     .then((dbRes) => {

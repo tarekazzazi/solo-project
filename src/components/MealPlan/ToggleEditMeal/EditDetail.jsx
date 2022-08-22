@@ -1,4 +1,3 @@
-import EditSingleRow from "./MealRow";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Button from "@mui/material/Button";
@@ -8,8 +7,6 @@ function editmealTable({ meal, toggleEdit }) {
   // set meal obj data to default value on Inputs
   const dispatch = useDispatch();
   const dates = useSelector((store) => store.date);
-  console.log("dates fromredux store are", dates);
-  console.log("meal is", meal);
 
   const [mealName, setMealName] = useState(meal.meal_name);
   const [mealType, setMealType] = useState(meal.meal_type);

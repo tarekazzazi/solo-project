@@ -21,41 +21,27 @@ function MealPlan() {
   const user = useSelector((store) => store.user);
 
   const dateArray = useSelector((store) =>
+    // maps every meals date from redux store
     store.meal.map((meal) => {
       return moment(meal.date).format("MM-DD-YYYY");
     })
   );
 
-  const orderDates = useSelector((store) => store.date);
-
-  console.log("Array of dates", dateArray);
-
-  console.log("the meals are", meals);
-
   function addDays(date, days) {
     // Calculates new date here
     let result = new Date(date);
-
     result.setDate(result.getDate() + days);
-
-    const mealdate = result;
-
-    return mealdate;
+    return result;
   }
 
   useEffect(() => {
-    console.log("In use Effect");
-
+    //  Uses moment to determine the start of the week
+    //  Adds 7 days to the startdate to determine the end date
     const startOfWeek = moment().startOf("week").toDate();
-    console.log("START", startOfWeek);
-
     const startDate = moment(startOfWeek).format("MM-DD-YYYY");
-
     const endDate = moment(addDays(new Date(startDate), 7)).format(
       "MM-DD-YYYY"
     );
-    // console.log("TEXT", moment(endDate).format("MM-DD-YYYY"));
-    console.log("TEXT", startDate, endDate);
 
     dispatch({
       type: "FETCH_MEAL",
@@ -113,7 +99,7 @@ function MealPlan() {
               </label>
             </div>
 
-            {/* //////////////////MEAL TABLE/////////////////////////// */}
+            {/* -------------------< MEAL TABLE >--------------------- */}
             <div className="mealTableContainer">
               <form>
                 <Card
@@ -157,14 +143,11 @@ function MealPlan() {
                             return <MealRow key={meal.id} meal={meal} />;
                           }
                         })}
-                      {/* <MealPlanDetail /> */}
                     </TableBody>
                   </Table>
                 </Card>
               </form>
             </div>
-            {/* ////////////////////////END OF MEAL TABLE?//////////////////////////// */}
-
             <MealForm />
           </Card>
         </div>

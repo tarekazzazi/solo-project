@@ -1,10 +1,25 @@
+-- DataBase: meal_planner
 
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
+-- User Table
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "password" VARCHAR (1000) NOT NULL,
+    "name" VARCHAR(255),
+	"wieght" INTEGER,
+	"max_carbs" INTEGER,
+	"doctor_notes" VARCHAR(255)
 );
+
+-- Meal Table
+CREATE TABLE "meals"(
+"id" SERIAL PRIMARY KEY,
+"user_id" INTEGER,
+"date" DATE,
+"meal_name" VARCHAR(255),
+"meal_type" VARCHAR(255),
+"carbs" INTEGER,
+"blood_sugar_lvl" INTEGER,
+"notes" VARCHAR(255)
+);
+

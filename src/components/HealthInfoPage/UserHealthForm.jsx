@@ -3,6 +3,7 @@ import "./Styles/HealthInfoPage.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Button from "@mui/material/Button";
+
 function HealthInfoPage() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -13,7 +14,6 @@ function HealthInfoPage() {
   const [doctorNotes, setDoctorNotes] = useState(user.doctor_notes);
 
   const updateHealthInfo = () => {
-    console.log("updating user info ");
     dispatch({
       type: "UPDATE_USER_HEALTH_INFO",
       payload: {

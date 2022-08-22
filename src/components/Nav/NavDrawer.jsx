@@ -2,8 +2,6 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-
-import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 
 import { styled, useTheme } from "@mui/material/styles";
@@ -21,7 +19,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import Avatar from "@mui/material/Avatar";
@@ -131,7 +128,7 @@ export default function NavDrawer() {
       text: "About",
       link: "/about",
       upperLowerNav: "upper",
-      icon: <InfoIcon />, // use this one for my meal plan
+      icon: <InfoIcon />,
     },
   ];
 

@@ -3,10 +3,11 @@ import EditDetail from "./EditDetail";
 import ReadOnlyRow from "./ReadOnlyRow";
 import { useEffect, useState } from "react";
 function singleMealRow({ meal }) {
-  // passing in meal prop on to EditDetail page and ReadOnlyRow page
-  // new state created editMeal
-  // editMeal set to false in function toggleEdit
-  // return fragment Checks to see if editeMeal is false then show EditDetail page if true show ReadOnlyRow page
+  // Passing in meal prop on to EditDetail componet and ReadOnlyRow componet
+  // New state created editMeal
+  // Default value for editMeal  is set to false in toggleEdit function
+  // return fragment Checks to see if editeMeal is false show EditDetail componet
+  // if true show ReadOnlyRow componet
   const [editMeal, setEditMeal] = useState();
 
   function toggleEdit() {
