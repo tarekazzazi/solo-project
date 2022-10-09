@@ -1,9 +1,37 @@
 # DB Tracker
 
+## Table of Contents
+
+
+- [Description](#description)
+- [Screen Shots](#screen-shots)
+- [App Demo](#app-demo)
+- [Prerequisites](#prerequisite)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Built With](#built-with)
+
+
+## Description
+
 DB Tracker is a app that helps people with diabeties manage all their health information and eat better
 by allowing them to create a weekly meal plan to track the amount of calories they consume per 
 meal and take their blood sugar level with each meal.
 
+## Screen Shots
+
+### Meal Plan
+![image](https://user-images.githubusercontent.com/97798525/194733117-d3278d63-e891-4e04-bd94-d60b5c70f148.png)
+
+### Blood Sugar Chart
+![image](https://user-images.githubusercontent.com/97798525/194733139-c7f36c59-f91f-4278-add1-31720f741937.png)
+
+### Nav Bar
+![image](https://user-images.githubusercontent.com/97798525/194733169-8bae86f3-cca1-4cda-a321-a88cd48a825a.png)
+
+## App Demo
+
+![video](https://user-images.githubusercontent.com/97798525/194734913-c45b274e-e445-4f9d-a2bf-1eb26556f84a.mp4)
 
 ## Getting Started
 
@@ -39,7 +67,7 @@ CREATE TABLE "meals" (
 );
 ```
 
-## Development Setup Instructions
+## Installation
 
 - Create a `.env` file at the root of the project and paste this line into the file:
   ```
