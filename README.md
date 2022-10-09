@@ -31,7 +31,7 @@ meal and take their blood sugar level with each meal.
 
 ## App Demo
 
-![video](https://user-images.githubusercontent.com/97798525/194734913-c45b274e-e445-4f9d-a2bf-1eb26556f84a.mp4)
+https://user-images.githubusercontent.com/97798525/194734913-c45b274e-e445-4f9d-a2bf-1eb26556f84a.mp4
 
 ## Getting Started
 
