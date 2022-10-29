@@ -11,14 +11,16 @@
 - [Installation](#installation)
 - [Built With](#built-with)
 
-## Deployed with Heroku at 
-(https://blooming-sea-57024.herokuapp.com/#/login)
+
 
 ## Description
 
 DB Tracker is a app that helps people with diabeties manage all their health information and eat better
 by allowing them to create a weekly meal plan to track the amount of calories they consume per 
 meal and take their blood sugar level with each meal.
+
+### Deployed with Heroku at 
+(https://blooming-sea-57024.herokuapp.com/#/login)
 
 ## Screen Shots
 
