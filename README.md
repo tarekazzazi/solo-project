@@ -11,6 +11,8 @@
 - [Installation](#installation)
 - [Built With](#built-with)
 
+## Deployed with Heroku at 
+(https://blooming-sea-57024.herokuapp.com/#/login)
 
 ## Description
 
@@ -30,7 +32,6 @@ meal and take their blood sugar level with each meal.
 ![image](https://user-images.githubusercontent.com/97798525/194733169-8bae86f3-cca1-4cda-a321-a88cd48a825a.png)
 
 ## App Demo
-
 https://user-images.githubusercontent.com/97798525/194734913-c45b274e-e445-4f9d-a2bf-1eb26556f84a.mp4
 
 ## Getting Started
